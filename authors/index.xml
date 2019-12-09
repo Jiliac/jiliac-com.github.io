@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Valentin Manès</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/profile.jpg</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>/authors/valentin/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/valentin/</guid>
+      <description>&lt;p&gt;After getting a Master in Computer Science, I did three years research in
+security (Linux kernel and fuzzing), and now I am a software engineer. I
+enjoy learning about as many different subjects as I can: history, economics,
+cultures, biology. Recently, I am insterested by interactions between many
+different units/systems, how to model them and the often intractable problems
+they create.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Marcel Böhme</title>
+      <link>/authors/marcel-bohme/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/marcel-bohme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sang Kil Cha</title>
+      <link>/authors/sang-kil-cha/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/sang-kil-cha/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Soomin Kim</title>
+      <link>/authors/soomin-kim/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/soomin-kim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Choongwoo Han</title>
+      <link>/authors/choongwoo-han/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/choongwoo-han/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Edward J. Schwartz</title>
+      <link>/authors/edward-j.-schwartz/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/edward-j.-schwartz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HyungSeok Chan</title>
+      <link>/authors/hyungseok-chan/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/hyungseok-chan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Manuel Egele</title>
+      <link>/authors/manuel-egele/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/manuel-egele/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Maverick Woo</title>
+      <link>/authors/maverick-woo/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/maverick-woo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Brent Byunghoon Kang</title>
+      <link>/authors/brent-byunghoon-kang/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/brent-byunghoon-kang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chanho Ryu</title>
+      <link>/authors/chanho-ryu/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/chanho-ryu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Daehee Jang</title>
+      <link>/authors/daehee-jang/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/daehee-jang/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

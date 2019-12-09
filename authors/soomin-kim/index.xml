@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Soomin Kim | Valentin Manès</title>
+    <link>/authors/soomin-kim/</link>
+      <atom:link href="/authors/soomin-kim/index.xml" rel="self" type="application/rss+xml" />
+    <description>Soomin Kim</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 05 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/profile.jpg</url>
+      <title>Soomin Kim</title>
+      <link>/authors/soomin-kim/</link>
+    </image>
+    
+    <item>
+      <title>Ankou: Guiding Grey-box Fuzzing towards Combinatorial Difference</title>
+      <link>/publication/ankou/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/ankou/</guid>
+      <description>&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

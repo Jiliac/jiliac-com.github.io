@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chanho Ryu | Valentin Manès</title>
+    <link>/authors/chanho-ryu/</link>
+      <atom:link href="/authors/chanho-ryu/index.xml" rel="self" type="application/rss+xml" />
+    <description>Chanho Ryu</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 02 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/profile.jpg</url>
+      <title>Chanho Ryu</title>
+      <link>/authors/chanho-ryu/</link>
+    </image>
+    
+    <item>
+      <title>Domain Isolated Kernel: A lightweight sandbox for untrusted kernel extensions</title>
+      <link>/publication/dikernel/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/dikernel/</guid>
+      <description>&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

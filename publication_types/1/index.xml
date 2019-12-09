@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1 | Valentin Manès</title>
+    <link>/publication_types/1/</link>
+      <atom:link href="/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
+    <description>1</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/profile.jpg</url>
+      <title>1</title>
+      <link>/publication_types/1/</link>
+    </image>
+    
+    <item>
+      <title>Boosting Fuzzer Efficiency: An Information Theoretic Perspective</title>
+      <link>/publication/entropic/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/entropic/</guid>
+      <description>&lt;p&gt;In this paper, we take the fundamental perspective of fuzzing as a learning
+process. Suppose before fuzzing, we know nothing about the behaviors of a
+program P: What does it do? Executing the first test input, we learn how P
+behaves for this input. Executing the next input, we either observe the same
+or discover a new behavior. As such, each execution reveals “some amount” of
+information about P’s behaviors. A classic measure of information is
+Shannon’s entropy. Measuring entropy allows us to quantify how much is
+learned from each generated test input about the behaviors of the program.
+Within a probabilistic model of fuzzing, we show how entropy also measures
+fuzzer efficiency. Specifically, it measures the general rate at which the
+fuzzer discovers new behaviors. Intuitively, efficient fuzzers maximize
+information.&lt;/p&gt;
+&lt;p&gt;From this information theoretic perspective, we develop En- tropic, an
+entropy-based power schedule for greybox fuzzing which assigns more energy to
+seeds that maximize information. We implemented Entropic into the popular
+greybox fuzzer LibFuzzer. Our experiments with more than 250 open-source
+programs (60 million LoC) demonstrate a substantially improved efficiency and
+confirm our hypothesis that an efficient fuzzer maximizes informa- tion.
+Entropic has been independently evaluated and invited for integration into
+main-line LibFuzzer. Entropic will run on more than 25,000 machines fuzzing
+hundreds of security-critical software systems simultaneously and
+continuously.&lt;/p&gt;
+&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ankou: Guiding Grey-box Fuzzing towards Combinatorial Difference</title>
+      <link>/publication/ankou/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/ankou/</guid>
+      <description>&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

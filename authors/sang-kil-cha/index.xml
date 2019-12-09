@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sang Kil Cha | Valentin Manès</title>
+    <link>/authors/sang-kil-cha/</link>
+      <atom:link href="/authors/sang-kil-cha/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sang Kil Cha</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/profile.jpg</url>
+      <title>Sang Kil Cha</title>
+      <link>/authors/sang-kil-cha/</link>
+    </image>
+    
+    <item>
+      <title>Boosting Fuzzer Efficiency: An Information Theoretic Perspective</title>
+      <link>/publication/entropic/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/entropic/</guid>
+      <description>&lt;p&gt;In this paper, we take the fundamental perspective of fuzzing as a learning
+process. Suppose before fuzzing, we know nothing about the behaviors of a
+program P: What does it do? Executing the first test input, we learn how P
+behaves for this input. Executing the next input, we either observe the same
+or discover a new behavior. As such, each execution reveals “some amount” of
+information about P’s behaviors. A classic measure of information is
+Shannon’s entropy. Measuring entropy allows us to quantify how much is
+learned from each generated test input about the behaviors of the program.
+Within a probabilistic model of fuzzing, we show how entropy also measures
+fuzzer efficiency. Specifically, it measures the general rate at which the
+fuzzer discovers new behaviors. Intuitively, efficient fuzzers maximize
+information.&lt;/p&gt;
+&lt;p&gt;From this information theoretic perspective, we develop En- tropic, an
+entropy-based power schedule for greybox fuzzing which assigns more energy to
+seeds that maximize information. We implemented Entropic into the popular
+greybox fuzzer LibFuzzer. Our experiments with more than 250 open-source
+programs (60 million LoC) demonstrate a substantially improved efficiency and
+confirm our hypothesis that an efficient fuzzer maximizes informa- tion.
+Entropic has been independently evaluated and invited for integration into
+main-line LibFuzzer. Entropic will run on more than 25,000 machines fuzzing
+hundreds of security-critical software systems simultaneously and
+continuously.&lt;/p&gt;
+&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ankou: Guiding Grey-box Fuzzing towards Combinatorial Difference</title>
+      <link>/publication/ankou/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/ankou/</guid>
+      <description>&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Art, Science, and Engineering of Fuzzing: A Survey</title>
+      <link>/publication/survey/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/survey/</guid>
+      <description>&lt;p&gt;Among the many software testing techniques available today, &lt;em&gt;fuzzing&lt;/em&gt; has
+remained highly popular due to its conceptual simplicity, its low barrier to
+deployment, and its vast amount of empirical evidence in discovering real-world
+software vulnerabilities.
+At a high level, fuzzing refers to a process of repeatedly running a program
+with generated inputs that may be syntactically or semantically malformed.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://ieeexplore.ieee.org/document/8863940&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Our survey&lt;/a&gt; shows the fuzzing
+community is extremely vibrant.
+The recent surge of work by researchers and practitioners alike has made it
+difficult to gain a comprehensive and coherent view of fuzzing. Thus, it is easy
+to lose track of the design decisions and potentially important tweaks performed
+in each tool and paper.
+Furthermore, there has been an observable fragmentation in the terminology used
+by various fuzzers. For example, test case &amp;ldquo;minimization&amp;rdquo; and &amp;ldquo;reduction&amp;rdquo;
+are often used interchangeably. Such fragmentation makes it difficult to
+discover and disseminate knowledge and may severely hinder the progress in
+fuzzing research in the long run.&lt;/p&gt;
+&lt;p&gt;To help preserve and bring coherence to the vast literature of fuzzing, this
+paper presented a unified, general-purpose model of fuzzing together with a
+taxonomy of the current literature.
+Our terminology is chosen to closely reflect the current predominant usages, and
+our model is designed to suit a large number of fuzzing tasks.
+We surveyed academic papers from the major Security and Software Engineering
+conferences in the last 10 years, as well as projects having more than 100 stars
+on GitHub.
+The paper methodically explores the design decisions at every stage of the model
+by surveying the related literature and innovations that make modern-day fuzzers
+effective.&lt;/p&gt;
+&lt;h2 id=&#34;companion-website&#34;&gt;Companion Website&lt;/h2&gt;
+&lt;p&gt;Our contribution in this work is more than just the survey. Upon receiving the
+acceptance notice, we have started building 
+&lt;a href=&#34;https://fuzzing-survey.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;a companion
+website&lt;/a&gt;. It is backed by 
+&lt;a href=&#34;https://github.com/SoftSec-KAIST/Fuzzing-Survey&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;a repository at
+GitHub&lt;/a&gt;, which contains the
+genealogy and the classification data of the surveyed fuzzers in the JSON
+format. We plan to keep this site up-to-date periodically through investing our
+own effort and accepting contributions from the community.&lt;/p&gt;
+&lt;style type=&#34;text/css&#34;&gt;
+body{ /* Normal  */
+    font-size: 13pt;
+}
+&lt;/style&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
