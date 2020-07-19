@@ -190,7 +190,11 @@
   
   
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
   
 
   
@@ -304,7 +308,6 @@
   <title>The Art, Science, and Engineering of Fuzzing: A Survey | Valentin Manès</title>
 
 </head>
-
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="dark">
 
   <aside class="search-results" id="search">
@@ -323,7 +326,7 @@
       <div id="search-box">
         
         <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
-        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
         
       </div>
 
@@ -340,6 +343,8 @@
 
 
   
+
+
 
 
 
@@ -502,7 +507,7 @@
     <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
       
       <li class="nav-item">
-        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
       </li>
       
 
@@ -580,7 +585,7 @@
     
 
   
-  <span><a href="/authors/valentin/">Valentin</a></span>, <span>HyungSeok Chan</span>, <span>Choongwoo Han</span>, <span>Sang Kil Cha</span>, <span>Manuel Egele</span>, <span>Edward J. Schwartz</span>, <span>Maverick Woo</span>
+  <span ><a href="/authors/valentin/">Valentin</a></span>, <span >HyungSeok Chan</span>, <span >Choongwoo Han</span>, <span >Sang Kil Cha</span>, <span >Manuel Egele</span>, <span >Edward J. Schwartz</span>, <span >Maverick Woo</span>
   </div>
   
   
@@ -601,6 +606,9 @@
 
   
   
+  
+  <span class="middot-divider"></span>
+  <a href="/publication/survey/#disqus_thread"></a>
   
 
   
@@ -805,6 +813,7 @@ body{ /* Normal  */
 </div>
 
     
+
 
 
 
@@ -1056,27 +1065,42 @@ body{ /* Normal  */
 
 
 
-
-
-
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "jiliac-com" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
   
-  
+</section>
 
 
 
-    <div id="disqus_thread"></div>
-    <script>
-      (function () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://jiliac-com.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-        Disqus.</a></noscript>
+
+
+
+
+
+
 
   </div>
 </div>
@@ -1086,7 +1110,7 @@ body{ /* Normal  */
     
     
     
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
@@ -1129,7 +1153,8 @@ body{ /* Normal  */
         'post': "Posts",
         'project': "Projects",
         'publication' : "Publications",
-        'talk' : "Talks"
+        'talk' : "Talks",
+        'slides' : "Slides"
         };
     </script>
     
@@ -1166,6 +1191,8 @@ body{ /* Normal  */
 
     
     
+    <script id="dsq-count-scr" src="https://jiliac-com.disqus.com/count.js" async></script>
+    
 
     
     
@@ -1181,7 +1208,7 @@ body{ /* Normal  */
     
     
     
-    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
 
     
 
