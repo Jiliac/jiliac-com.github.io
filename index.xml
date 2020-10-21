@@ -5,12 +5,34 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Valentin Manès</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 21 Oct 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/profile.jpg</url>
       <title>Valentin Manès</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Ankou: Painful Creativity</title>
+      <link>/post/ankou_creativity/</link>
+      <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/ankou_creativity/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;“If you want to increase your success rate, double your failure rate.”
+&lt;em&gt;Thomas J. Watson, IBM CEO&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It is not said enough. Before succeeding, you fail. It is normal. You should
+make it your expectation. It is part of the process. Of course, it is painful,
+especially when seeing the seemingly overwhelming success of everyone around
+you. Personally, I had to stop going on Twitter because it was too painful to
+see everyone going forward while I was stuck in the same place for so long. So I
+feel like it is important to talk about this part of this story so that others
+do not get disheartened.&lt;/p&gt;
+&lt;p&gt;See the rest of the article on 
+&lt;a href=&#34;https://csrc.kaist.ac.kr/blog/2020/10/21/painful-creativity&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CSRC
+blog&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Checklist of &#39;How to Win Friends and Influence People&#39;</title>
