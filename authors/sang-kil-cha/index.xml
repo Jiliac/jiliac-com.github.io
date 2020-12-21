@@ -17,7 +17,18 @@
       <link>/publication/entropic/</link>
       <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
       <guid>/publication/entropic/</guid>
-      <description>&lt;p&gt;In this paper, we take the fundamental perspective of fuzzing as a learning
+      <description>&lt;p&gt;Entropic received the 
+&lt;a href=&#34;https://2020.esec-fse.org/program/program-esecfse-2020&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ACM SIGSOFT Distinguished Paper
+Award&lt;/a&gt;! Furthermore,
+its code was made the 
+&lt;a href=&#34;https://github.com/llvm/llvm-project/commit/f3c2e0bcee64b0905addaefe9cd0c9ad4d20ac6f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;default schedule in
+LibFuzzer&lt;/a&gt;
+which powers 
+&lt;a href=&#34;https://github.com/google/oss-fuzz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google&amp;rsquo;s OSSFuzz&lt;/a&gt; and
+
+&lt;a href=&#34;https://github.com/microsoft/onefuzz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Microsoft&amp;rsquo;s OneFuzz&lt;/a&gt; 🚀.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;In this paper, we take the fundamental perspective of fuzzing as a learning
 process. Suppose before fuzzing, we know nothing about the behaviors of a
 program P: What does it do? Executing the first test input, we learn how P
 behaves for this input. Executing the next input, we either observe the same

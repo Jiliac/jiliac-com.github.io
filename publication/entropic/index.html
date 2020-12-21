@@ -27,7 +27,8 @@
   
     
   
-  <meta name="description" content="Entropic is an information-theoretic power schedule implemented based on LibFuzzer. It boosts performance by changing weights assigned to the seeds in the corpus. Seeds revealing more &#34;information&#34; are assigned a higher weight. Entropic has been independently evaluated by a team at Google and invited for integration into mainline LibFuzzer @ LLVM (C&#43;&#43; code base), whereupon Entropic was subject to a substantial code reviewing process.">
+  <meta name="description" content="Entropic is an information-theoretic power schedule implemented based on LibFuzzer. It boosts performance by changing weights assigned to the seeds in the corpus. Seeds revealing more &#34;information&#34; are assigned a higher weight.
+&lt;br&gt;Entropic received the [ACM SIGSOFT Distinguished Paper Award](https://2020.esec-fse.org/program/program-esecfse-2020)! Furthermore, its code was made the [default schedule in LibFuzzer](https://github.com/llvm/llvm-project/commit/f3c2e0bcee64b0905addaefe9cd0c9ad4d20ac6f) @ LLVM (C&#43;&#43; code base), which powers [Google&#39;s OSSFuzz](https://github.com/google/oss-fuzz) and [Microsoft&#39;s OneFuzz](https://github.com/microsoft/onefuzz) 🚀.">
 
   
   <link rel="alternate" hreflang="en-us" href="/publication/entropic/">
@@ -240,7 +241,8 @@
   <meta property="og:site_name" content="Valentin Manès">
   <meta property="og:url" content="/publication/entropic/">
   <meta property="og:title" content="Boosting Fuzzer Efficiency: An Information Theoretic Perspective | Valentin Manès">
-  <meta property="og:description" content="Entropic is an information-theoretic power schedule implemented based on LibFuzzer. It boosts performance by changing weights assigned to the seeds in the corpus. Seeds revealing more &#34;information&#34; are assigned a higher weight. Entropic has been independently evaluated by a team at Google and invited for integration into mainline LibFuzzer @ LLVM (C&#43;&#43; code base), whereupon Entropic was subject to a substantial code reviewing process."><meta property="og:image" content="/img/profile.jpg">
+  <meta property="og:description" content="Entropic is an information-theoretic power schedule implemented based on LibFuzzer. It boosts performance by changing weights assigned to the seeds in the corpus. Seeds revealing more &#34;information&#34; are assigned a higher weight.
+&lt;br&gt;Entropic received the [ACM SIGSOFT Distinguished Paper Award](https://2020.esec-fse.org/program/program-esecfse-2020)! Furthermore, its code was made the [default schedule in LibFuzzer](https://github.com/llvm/llvm-project/commit/f3c2e0bcee64b0905addaefe9cd0c9ad4d20ac6f) @ LLVM (C&#43;&#43; code base), which powers [Google&#39;s OSSFuzz](https://github.com/google/oss-fuzz) and [Microsoft&#39;s OneFuzz](https://github.com/microsoft/onefuzz) 🚀."><meta property="og:image" content="/img/profile.jpg">
   <meta property="twitter:image" content="/img/profile.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -288,7 +290,7 @@
       "url": "/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Entropic is an information-theoretic power schedule implemented based on LibFuzzer. It boosts performance by changing weights assigned to the seeds in the corpus. Seeds revealing more \"information\" are assigned a higher weight. Entropic has been independently evaluated by a team at Google and invited for integration into mainline LibFuzzer @ LLVM (C++ code base), whereupon Entropic was subject to a substantial code reviewing process."
+  "description": "Entropic is an information-theoretic power schedule implemented based on LibFuzzer. It boosts performance by changing weights assigned to the seeds in the corpus. Seeds revealing more \"information\" are assigned a higher weight.\n\u003cbr\u003eEntropic received the [ACM SIGSOFT Distinguished Paper Award](https://2020.esec-fse.org/program/program-esecfse-2020)! Furthermore, its code was made the [default schedule in LibFuzzer](https://github.com/llvm/llvm-project/commit/f3c2e0bcee64b0905addaefe9cd0c9ad4d20ac6f) @ LLVM (C++ code base), which powers [Google's OSSFuzz](https://github.com/google/oss-fuzz) and [Microsoft's OneFuzz](https://github.com/microsoft/onefuzz) 🚀."
 }
 </script>
 
@@ -671,7 +673,19 @@
 
 
 
+  
+  
+    
+  
+<a class="btn btn-outline-primary my-1 mr-1" href="https://youtu.be/kErOWtmURJE" target="_blank" rel="noopener">
+  Video
+</a>
 
+
+
+<a class="btn btn-outline-primary my-1 mr-1" href="https://doi.org/10.1145/3368089.3409748" target="_blank" rel="noopener">
+  DOI
+</a>
 
 
 
@@ -722,7 +736,18 @@
 
     <div class="space-below"></div>
 
-    <div class="text-justify article-style"><p>In this paper, we take the fundamental perspective of fuzzing as a learning
+    <div class="text-justify article-style"><p>Entropic received the 
+<a href="https://2020.esec-fse.org/program/program-esecfse-2020" target="_blank" rel="noopener">ACM SIGSOFT Distinguished Paper
+Award</a>! Furthermore,
+its code was made the 
+<a href="https://github.com/llvm/llvm-project/commit/f3c2e0bcee64b0905addaefe9cd0c9ad4d20ac6f" target="_blank" rel="noopener">default schedule in
+LibFuzzer</a>
+which powers 
+<a href="https://github.com/google/oss-fuzz" target="_blank" rel="noopener">Google&rsquo;s OSSFuzz</a> and
+
+<a href="https://github.com/microsoft/onefuzz" target="_blank" rel="noopener">Microsoft&rsquo;s OneFuzz</a> 🚀.</p>
+<hr>
+<p>In this paper, we take the fundamental perspective of fuzzing as a learning
 process. Suppose before fuzzing, we know nothing about the behaviors of a
 program P: What does it do? Executing the first test input, we learn how P
 behaves for this input. Executing the next input, we either observe the same
