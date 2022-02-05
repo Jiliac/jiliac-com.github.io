@@ -141,7 +141,8 @@ alt=&#34;Frenzy of new technology&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;“Strong opinions, loosely held.”&lt;/em&gt; — Marc Andreessen&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;If you disagree with any of the above, send me a mail at &lt;a href=&#34;mailto:valentinmanes@outlook.fr&#34;&gt;valentinmanes@outlook.fr&lt;/a&gt; to enrich our ideas.&lt;/p&gt;
+&lt;p&gt;If you disagree with any of the above, send me a mail at 
+&lt;a href=&#34;mailto:valentinmanes@outlook.fr&#34;&gt;valentinmanes@outlook.fr&lt;/a&gt; to enrich our ideas.&lt;/p&gt;
 &lt;p&gt;Otherwise, if you have a favorite resource you think I should start with, I’ll gladly take any advice since the area is so wide and a bit overwhelming to enter in.&lt;/p&gt;
 </description>
     </item>
@@ -451,7 +452,7 @@ suggest&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I have no right to say or do anything that diminishes a man in his own
 eyes. What matters is not what I think of him, but what he thinks of himself.
-Hurting a man dignity is a crime.&amp;rdquo; Antoine de Saint-Exupéry.&lt;/p&gt;
+Hurting a man dignity is a crime.&amp;quot; Antoine de Saint-Exupéry.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;If you destroy other people&amp;rsquo;s ego, they will always resent you and never
 follow you.&lt;/p&gt;
@@ -594,7 +595,8 @@ compiling your kernel with clang:&lt;/p&gt;
 &lt;li&gt;Get the right version of clang.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Everything is very well summarized on a LKML post from last November:
-&lt;a href=&#34;https://lkml.org/lkml/2017/11/22/943&#34;&gt;https://lkml.org/lkml/2017/11/22/943&lt;/a&gt;.&lt;/p&gt;
+
+&lt;a href=&#34;https://lkml.org/lkml/2017/11/22/943&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lkml.org/lkml/2017/11/22/943&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Concerning the source, I went for the simplest path: getting the latest stable
 version of the kernel with default configuration:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
@@ -607,8 +609,10 @@ complicated. I didn&amp;rsquo;t try it but you might want to look for the androi
 that have not been upstreamed yet. Posting here because it&amp;rsquo;s not linked in the
 Matthias Kaehlcke&amp;rsquo;s LKML post:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/kernel/common.git/+log/android-4.9&#34;&gt;https://android.googlesource.com/kernel/common.git/+log/android-4.9&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://android.googlesource.com/kernel/common.git/+log/android-4.4&#34;&gt;https://android.googlesource.com/kernel/common.git/+log/android-4.4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://android.googlesource.com/kernel/common.git/&amp;#43;log/android-4.9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://android.googlesource.com/kernel/common.git/+log/android-4.9&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://android.googlesource.com/kernel/common.git/&amp;#43;log/android-4.4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://android.googlesource.com/kernel/common.git/+log/android-4.4&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There also other documentation made by Google 
 &lt;a href=&#34;https://apt.llvm.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
