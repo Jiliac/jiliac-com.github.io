@@ -5,12 +5,291 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 05 Feb 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/profile_valentin.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Hello World to Verifiable Credentials</title>
+      <link>/post/vc/</link>
+      <pubDate>Sat, 05 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/post/vc/</guid>
+      <description>&lt;h2 id=&#34;what-this-is-about&#34;&gt;What this is about&lt;/h2&gt;
+&lt;p&gt;This is a basic programming showcase of VCs (read on to know what they are).&lt;/p&gt;
+&lt;p&gt;The code can be fund on 
+&lt;a href=&#34;https://github.com/Jiliac/verifiable-credential/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt; but I&amp;rsquo;ll share the most important snippet here.&lt;/p&gt;
+&lt;h2 id=&#34;-vcs-what&#34;&gt;🤯 VCs what?&lt;/h2&gt;
+&lt;p&gt;Verifiable credentials (VCs) are the translation of physical credentials like a driving licence or a degree in the digital world.&lt;/p&gt;
+&lt;p&gt;Relying on cryptographic proofs enables several advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Impossible to fake&lt;/li&gt;
+&lt;li&gt;Scalable since digital (for all the actor involved)&lt;/li&gt;
+&lt;li&gt;Enables minimum disclosure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This last point may be fuzzy because we never do it in the physical world. Let’s take an example.&lt;/p&gt;
+&lt;p&gt;Let’s say you are asked to prove you are an adult. By showing your ID, you actually reveal much more than a binary “I’m an adult” or “I’m an minor”.&lt;/p&gt;
+&lt;p&gt;You reveal:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your exact age&lt;/li&gt;
+&lt;li&gt;Your name&lt;/li&gt;
+&lt;li&gt;Your address&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;-whos-playing&#34;&gt;🕹️ Who’s playing?&lt;/h2&gt;
+&lt;p&gt;There are three roles involve with any type of credential:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;Issuer&lt;/strong&gt;: creation of the credential&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Subject&lt;/strong&gt;: The credential is about them. They receive it, hold it and share it with the Verifiers.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Verifier&lt;/strong&gt;: Receive and verify the proofs from Subjects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;The Three Roles concerning Credentials&#34;
+    src=&#34;/img/vc/three_roles.png&#34; width=&#34;600px&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Now let’s take a close (technical 🤓) look at each of the role.&lt;/p&gt;
+&lt;h2 id=&#34;part-i-the-issuance&#34;&gt;Part I: The Issuance&lt;/h2&gt;
+&lt;p&gt;Let’s say the issuer is my university. I just graduated and I get issued a degree:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;age&amp;quot;: 24,
+  &amp;quot;universityName&amp;quot;: &amp;quot;Oxford&amp;quot;,
+  &amp;quot;degree&amp;quot;: &amp;quot;Bachelor of Science&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above is the &lt;em&gt;claim&lt;/em&gt; of the credential.&lt;/p&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;The Three Parts of a Verifiable Credential&#34;
+    src=&#34;/img/vc/credential_parts.png&#34; width=&#34;300px&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Our next goal is to get the issuer to &lt;em&gt;sign&lt;/em&gt; this claim. This signature will be the proof.&lt;/p&gt;
+&lt;p&gt;To do so, the issuer needs two things:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;To have a digital presence. Which is represented cryptographically by a public and private key.&lt;/li&gt;
+&lt;li&gt;To know &lt;em&gt;who&lt;/em&gt; is the subject. In digital terms, what’s the public key of the &lt;em&gt;subject&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type KeyPair struct {
+	PublicKey  ed25519.PublicKey
+	PrivateKey ed25519.PrivateKey
+}
+
+type Issuer struct {
+	keys KeyPair
+
+	ID   string
+	Name string
+}
+
+type Subject struct {
+	keys KeyPair
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is enough to get our first verifiable credential signed 🚀&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;An issuer, meaning a public and a private key&lt;/li&gt;
+&lt;li&gt;The public key of the subject. (Below this is the &lt;code&gt;subjectID&lt;/code&gt;.)&lt;/li&gt;
+&lt;li&gt;A claim&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (i Issuer) SignCredential(claim Claim, subjectID []byte) (Credential, error) {
+	creds := Credential{
+		Context:          vcContext,
+		TypeOfCredential: append(claim.GetType(), vcType),
+		Issuer:           i,
+		IssuanceDate:     time.Now(),
+		CredentialSubject: CredentialSubject{
+			ID:    subjectID,
+			Claim: claim,
+		},
+	}
+
+	creds.Proof = SignProof(i.keys, creds.ToBytes())
+	return creds, err
+}
+
+func SignProof(keys KeyPair, docToSign) Proof {
+	proof := Proof{
+		TypeOfProof: ed25519Type,
+		Created:     time.Now(),
+		Creator:     keys.PublicKey,
+	}
+
+	proof.Signature = ed25519.Sign(keys.PrivateKey, docToSign)
+
+	return proof
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output would look like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;context&amp;quot;: [   
+    &amp;quot;https://www.w3.org/2018/credentials/v1&amp;quot;
+  ], 
+  &amp;quot;type&amp;quot;: [    
+    &amp;quot;GraduationCredential&amp;quot;,
+    &amp;quot;VerifiableCredential&amp;quot;   
+  ],  
+  &amp;quot;issuer&amp;quot;: {     
+    &amp;quot;ID&amp;quot;: &amp;quot;https://oxford.com/issuers/1&amp;quot;,
+    &amp;quot;Name&amp;quot;: &amp;quot;The Marvelous University of Oxford&amp;quot;           
+  },   
+  &amp;quot;issuanceDate&amp;quot;: &amp;quot;2022-01-11T16:49:46.424839+01:00&amp;quot;,
+  &amp;quot;credentialSubject&amp;quot;: {          
+    &amp;quot;id&amp;quot;: &amp;quot;CmwdBhPLKTvX8EeaUFnRsHJ/UXspbvU4o3DDPnRK8Ws=&amp;quot;,
+    &amp;quot;claim&amp;quot;: {
+      &amp;quot;age&amp;quot;: 24,
+      &amp;quot;universityName&amp;quot;: &amp;quot;Oxford&amp;quot;,
+      &amp;quot;degree&amp;quot;: &amp;quot;Bachelor of Science&amp;quot;
+    }
+  },
+  &amp;quot;proof&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;Ed25519Signature2018&amp;quot;,
+    &amp;quot;created&amp;quot;: &amp;quot;2022-01-11T16:49:46.425012+01:00&amp;quot;,
+    &amp;quot;creator&amp;quot;: &amp;quot;i+HjQgi8ln5OEXuFKtaW0A1LwJo6o95tcKv+dtGFw/I=&amp;quot;,
+    &amp;quot;signature&amp;quot;: &amp;quot;P0HOyLzkYD65KPxLrKF0jHzuLkhzHGFj1+6MnEa9329uaE88v0Pp1uB7KR+SONwE5pBq6ZMGgfwScWb0SIQ5Dg==&amp;quot;
+  }   
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;context&lt;/code&gt;, &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;issuanceDate&lt;/code&gt; are the metadata of the VC. They will be usually be present in all VCs but for our first understanding of their usage, we can ignore them.&lt;/p&gt;
+&lt;p&gt;In this example, I’ve chosen to put the public keys directly in the VC. The &lt;code&gt;proof.creator&lt;/code&gt; and &lt;code&gt;credentialSubject.id&lt;/code&gt; fields are respectively the public keys of the issuer and the subject.&lt;/p&gt;
+&lt;p&gt;In a real application, they would be a 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Decentralized_identifier&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Decentralized Identifier&lt;/a&gt; (DID) which would point to the keys.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A DID can resolve to multiple public keys&lt;/li&gt;
+&lt;li&gt;A DID enable the rotatation of these keys&lt;/li&gt;
+&lt;li&gt;A DID can resolve to service endpoints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: If you look at 
+&lt;a href=&#34;https://github.com/Jiliac/verifiable-credential&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the full code in the repo&lt;/a&gt;, you’ll see that in the excerpt above I cheated twice 😛. I hope you’ll forgive these simplifications.&lt;/p&gt;
+&lt;h2 id=&#34;part-ii-the-presentation-by-the-subject&#34;&gt;Part II: The Presentation (by the Subject)&lt;/h2&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;The Three Roles concerning Credentials&#34;
+    src=&#34;/img/vc/three_roles.png&#34; width=&#34;600px&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Now that our subject has its degree, he can present it to an employer.&lt;/p&gt;
+&lt;p&gt;You may be thinking: well, in the real world, I just show my credential to the verifier and that’s it.&lt;/p&gt;
+&lt;p&gt;Except, there is moment when you give your driving licence to a police officer where he checks that your face looks like the photo on your ID. What is this check for?&lt;/p&gt;
+&lt;p&gt;.&lt;/p&gt;
+&lt;p&gt;.&lt;/p&gt;
+&lt;p&gt;Found it? It’s to check that you are the real owner of the credential. The police officer wants to make sure you didn’t happen to give him a credential about someone else.&lt;/p&gt;
+&lt;p&gt;How does this step translates in the digital world?&lt;/p&gt;
+&lt;p&gt;It’s what we call the &lt;strong&gt;Presentation&lt;/strong&gt; of the credential.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To make sure the subject presents a credential that is his, the verifier asks him to sign the credential.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You may think: we are coming back to the same problem. The subject could steal an old presentation and give it to the verifier.&lt;/p&gt;
+&lt;p&gt;So that’s why the verifier provides a “challenge” to the subject to include in its presentation. It ensures the presentation was done by the subject just for this verification.&lt;/p&gt;
+&lt;p&gt;This challenge is called a &lt;em&gt;nonce&lt;/em&gt; (i.e. a number only used once).&lt;/p&gt;
+&lt;p&gt;Fuzzy? Let’s get in the code to make it clearer:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func main() {
+	// ...
+
+	nonce := verifier.MakeNonce()
+	presentation, err := subject.SignPresentation(credentials, nonce)
+}
+
+func (s Subject) SignPresentation(credentials Credential, nonce []byte) (
+	Presentation, error) {
+
+	presentation := Presentation{
+		Context:            vcContext,
+		TypeOfPresentation: []string{presType},
+		Credential:         credentials,
+		Nonce:              nonce,
+	}
+
+	presentation.Proof = SignProof(s.keys, presentation.ToBytes())
+	return presentation, err
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Presentation we get as output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{      
+  &amp;quot;context&amp;quot;: [   
+    &amp;quot;https://www.w3.org/2018/credentials/v1&amp;quot;  
+  ],
+  &amp;quot;type&amp;quot;: [ 
+    &amp;quot;VerifiablePresentation&amp;quot;     
+  ],
+  &amp;quot;credential&amp;quot;: {
+    &amp;quot;context&amp;quot;: [
+      &amp;quot;https://www.w3.org/2018/credentials/v1&amp;quot;
+    ],
+    &amp;quot;type&amp;quot;: [
+      &amp;quot;GraduationCredential&amp;quot;,
+      &amp;quot;VerifiableCredential&amp;quot;
+    ],
+    &amp;quot;issuer&amp;quot;: {
+      &amp;quot;ID&amp;quot;: &amp;quot;https://oxford.com/issuers/1&amp;quot;,
+      &amp;quot;Name&amp;quot;: &amp;quot;The Marvelous University of Oxford&amp;quot;
+    },
+    &amp;quot;issuanceDate&amp;quot;: &amp;quot;2022-01-11T16:49:46.424839+01:00&amp;quot;,
+    &amp;quot;credentialSubject&amp;quot;: {
+      &amp;quot;id&amp;quot;: &amp;quot;CmwdBhPLKTvX8EeaUFnRsHJ/UXspbvU4o3DDPnRK8Ws=&amp;quot;,
+      &amp;quot;claim&amp;quot;: {
+        &amp;quot;age&amp;quot;: 24,
+        &amp;quot;universityName&amp;quot;: &amp;quot;Oxford&amp;quot;,
+        &amp;quot;degree&amp;quot;: &amp;quot;Bachelor of Science&amp;quot;
+      }
+    },
+    &amp;quot;proof&amp;quot;: {
+      &amp;quot;type&amp;quot;: &amp;quot;Ed25519Signature2018&amp;quot;,
+      &amp;quot;created&amp;quot;: &amp;quot;2022-01-11T16:49:46.425012+01:00&amp;quot;,
+      &amp;quot;creator&amp;quot;: &amp;quot;i+HjQgi8ln5OEXuFKtaW0A1LwJo6o95tcKv+dtGFw/I=&amp;quot;,
+      &amp;quot;signature&amp;quot;: &amp;quot;P0HOyLzkYD65KPxLrKF0jHzuLkhzHGFj1+6MnEa9329uaE88v0Pp1uB7KR+SONwE5pBq6ZMGgfwScWb0SIQ5Dg==&amp;quot;
+    }
+  },
+  &amp;quot;nonce&amp;quot;: &amp;quot;Uv38ByGCZU8WP18P&amp;quot;,
+  &amp;quot;proof&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;Ed25519Signature2018&amp;quot;,
+    &amp;quot;created&amp;quot;: &amp;quot;2022-01-11T16:49:46.425128+01:00&amp;quot;,
+    &amp;quot;creator&amp;quot;: &amp;quot;CmwdBhPLKTvX8EeaUFnRsHJ/UXspbvU4o3DDPnRK8Ws=&amp;quot;,
+    &amp;quot;signature&amp;quot;: &amp;quot;raseJvdviujKjsDGCV9A+K7o4zaMW2rqGpihXZKBqNdQvNhFgWnA5jsc1wjJ4ZQdC7I/GBRA9NBzAm7EwIT2Ag==&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;part-iii-the-verification&#34;&gt;Part III: The Verification&lt;/h2&gt;
+&lt;p&gt;The verifier has three things to check in the presentation above:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The proof is signed by the subject of the credential (and the nonce is correct).&lt;/li&gt;
+&lt;li&gt;The credential is correctly signed by the issuer.&lt;/li&gt;
+&lt;li&gt;The presentation is correctly signed by the subject.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The first check is easily done: Are the &lt;code&gt;proof.created&lt;/code&gt; and &lt;code&gt;credential.credentialSubject.id&lt;/code&gt; equal?&lt;/p&gt;
+&lt;p&gt;The two others verifies that the signature match the public key and the content the proof is about (the credential or the presentation).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func verifiesSignature(proof Proof, signedDoc []byte) bool {
+	pubKey := proof.Creator
+	signature := proof.Signature
+
+	return ed25519.Verify(pubKey, signedDoc, signature)
+}
+
+func (v Verifier) VerifiesPresentation(presentation Presentation) (err error) {
+	// 1 - Checks the Presentation is signed by the Subject of the credential
+	credential := presentation.Credential
+	credentialSubjectID := credential.CredentialSubject.ID
+	presentationProver := presentation.Proof.Creator
+	if bytes.Compare(credentialSubjectID, presentationProver) != 0 {
+		return fmt.Errorf(&amp;quot;Presentation prover is not the credential subject.&amp;quot;)
+	}
+
+	// 2 - Checks the credential
+	okCred := verifiesSignature(credential.Proof, credential.ToBytes())
+	if !okCred {
+		return fmt.Errorf(&amp;quot;Invalid credential signature.&amp;quot;)
+	}
+
+	// 3 - Checks the presentation
+	okPres := verifiesSignature(presentation.Proof, presentation.ToBytes())
+	if !okPres {
+		return fmt.Errorf(&amp;quot;Invalid presentation signature.&amp;quot;)
+	}
+
+	return err
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;“VC are just signed JSON.”&lt;/p&gt;
+&lt;p&gt;Although they are new, obscure and not currently common aren’t so scary once you get to play them.&lt;/p&gt;
+&lt;p&gt;Hope this was useful.&lt;/p&gt;
+&lt;p&gt;Valentin, signing off 🖋️&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Conversion of a Crypto-Skeptic</title>
