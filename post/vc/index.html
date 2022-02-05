@@ -27,7 +27,8 @@
   
     
   
-  <meta name="description" content="Look inside: What’s the promise of the blockchain you believe in? That it will change the world? Or that it will make you rich?">
+  <meta name="description" content=" Verifiable credentials (VCs) are the translation of physical credentials like a driving license or a degree in the digital world.
+In practice, it means we are just signed JSON. Let&#39;s see what an &#39;hello world&#39; signed would look like. ">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/vc/">
@@ -240,7 +241,8 @@
   <meta property="og:site_name" content="Valentin Manès">
   <meta property="og:url" content="/post/vc/">
   <meta property="og:title" content="Hello World to Verifiable Credentials | Valentin Manès">
-  <meta property="og:description" content="Look inside: What’s the promise of the blockchain you believe in? That it will change the world? Or that it will make you rich?"><meta property="og:image" content="/post/vc/featured.jpeg">
+  <meta property="og:description" content=" Verifiable credentials (VCs) are the translation of physical credentials like a driving license or a degree in the digital world.
+In practice, it means we are just signed JSON. Let&#39;s see what an &#39;hello world&#39; signed would look like. "><meta property="og:image" content="/post/vc/featured.jpeg">
   <meta property="twitter:image" content="/post/vc/featured.jpeg"><meta property="og:locale" content="en-us">
   
     
@@ -289,7 +291,7 @@
       "url": "/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Look inside: What’s the promise of the blockchain you believe in? That it will change the world? Or that it will make you rich?"
+  "description": " Verifiable credentials (VCs) are the translation of physical credentials like a driving license or a degree in the digital world.\nIn practice, it means we are just signed JSON. Let's see what an 'hello world' signed would look like. "
 }
 </script>
 
@@ -656,10 +658,10 @@
     <div class="text-justify article-style">
       <h2 id="what-this-is-about">What this is about</h2>
 <p>This is a basic programming showcase of VCs (read on to know what they are).</p>
-<p>The code can be fund on 
+<p>The code can be found on 
 <a href="https://github.com/Jiliac/verifiable-credential/" target="_blank" rel="noopener">Github</a> but I&rsquo;ll share the most important snippet here.</p>
 <h2 id="-vcs-what">🤯 VCs what?</h2>
-<p>Verifiable credentials (VCs) are the translation of physical credentials like a driving licence or a degree in the digital world.</p>
+<p>Verifiable credentials (VCs) are the translation of physical credentials like a driving license or a degree in the digital world.</p>
 <p>Relying on cryptographic proofs enables several advantages:</p>
 <ul>
 <li>Impossible to fake</li>
@@ -785,13 +787,13 @@ func SignProof(keys KeyPair, docToSign) Proof {
   }   
 }
 </code></pre>
-<p>The <code>context</code>, <code>type</code> and <code>issuanceDate</code> are the metadata of the VC. They will be usually be present in all VCs but for our first understanding of their usage, we can ignore them.</p>
+<p>The <code>context</code>, <code>type</code> and <code>issuanceDate</code> are the metadata of the VC. They will usually be present in all VCs but for our first understanding of their usage, we can ignore them.</p>
 <p>In this example, I’ve chosen to put the public keys directly in the VC. The <code>proof.creator</code> and <code>credentialSubject.id</code> fields are respectively the public keys of the issuer and the subject.</p>
 <p>In a real application, they would be a 
 <a href="https://en.wikipedia.org/wiki/Decentralized_identifier" target="_blank" rel="noopener">Decentralized Identifier</a> (DID) which would point to the keys.</p>
 <ul>
 <li>A DID can resolve to multiple public keys</li>
-<li>A DID enable the rotatation of these keys</li>
+<li>A DID enable the rotation of these keys</li>
 <li>A DID can resolve to service endpoints</li>
 </ul>
 <p>Note: If you look at 
@@ -803,11 +805,11 @@ func SignProof(keys KeyPair, docToSign) Proof {
 </p>
 <p>Now that our subject has its degree, he can present it to an employer.</p>
 <p>You may be thinking: well, in the real world, I just show my credential to the verifier and that’s it.</p>
-<p>Except, there is moment when you give your driving licence to a police officer where he checks that your face looks like the photo on your ID. What is this check for?</p>
+<p>Except, there is this moment when you give your driving license to a police officer where he checks that your face looks like the photo on your ID. What is this check for?</p>
 <p>.</p>
 <p>.</p>
 <p>Found it? It’s to check that you are the real owner of the credential. The police officer wants to make sure you didn’t happen to give him a credential about someone else.</p>
-<p>How does this step translates in the digital world?</p>
+<p>How does this step translate in the digital world?</p>
 <p>It’s what we call the <strong>Presentation</strong> of the credential.</p>
 <p><strong>To make sure the subject presents a credential that is his, the verifier asks him to sign the credential.</strong></p>
 <p>You may think: we are coming back to the same problem. The subject could steal an old presentation and give it to the verifier.</p>
@@ -888,7 +890,7 @@ func (s Subject) SignPresentation(credentials Credential, nonce []byte) (
 <li>The presentation is correctly signed by the subject.</li>
 </ol>
 <p>The first check is easily done: Are the <code>proof.created</code> and <code>credential.credentialSubject.id</code> equal?</p>
-<p>The two others verifies that the signature match the public key and the content the proof is about (the credential or the presentation).</p>
+<p>The two others verifies that the signature matches the public key and the content the proof is about (the credential or the presentation).</p>
 <pre><code class="language-go">func verifiesSignature(proof Proof, signedDoc []byte) bool {
 	pubKey := proof.Creator
 	signature := proof.Signature
@@ -921,7 +923,7 @@ func (v Verifier) VerifiesPresentation(presentation Presentation) (err error) {
 }
 </code></pre>
 <h2 id="conclusion">Conclusion</h2>
-<p>“VC are just signed JSON.”</p>
+<p>“VCs are just signed JSON.”</p>
 <p>Although they are new, obscure and not currently common aren’t so scary once you get to play them.</p>
 <p>Hope this was useful.</p>
 <p>Valentin, signing off 🖋️</p>

@@ -19,10 +19,10 @@
       <guid>/post/vc/</guid>
       <description>&lt;h2 id=&#34;what-this-is-about&#34;&gt;What this is about&lt;/h2&gt;
 &lt;p&gt;This is a basic programming showcase of VCs (read on to know what they are).&lt;/p&gt;
-&lt;p&gt;The code can be fund on 
+&lt;p&gt;The code can be found on 
 &lt;a href=&#34;https://github.com/Jiliac/verifiable-credential/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt; but I&amp;rsquo;ll share the most important snippet here.&lt;/p&gt;
 &lt;h2 id=&#34;-vcs-what&#34;&gt;🤯 VCs what?&lt;/h2&gt;
-&lt;p&gt;Verifiable credentials (VCs) are the translation of physical credentials like a driving licence or a degree in the digital world.&lt;/p&gt;
+&lt;p&gt;Verifiable credentials (VCs) are the translation of physical credentials like a driving license or a degree in the digital world.&lt;/p&gt;
 &lt;p&gt;Relying on cryptographic proofs enables several advantages:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Impossible to fake&lt;/li&gt;
@@ -148,13 +148,13 @@ func SignProof(keys KeyPair, docToSign) Proof {
   }   
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;context&lt;/code&gt;, &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;issuanceDate&lt;/code&gt; are the metadata of the VC. They will be usually be present in all VCs but for our first understanding of their usage, we can ignore them.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;context&lt;/code&gt;, &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;issuanceDate&lt;/code&gt; are the metadata of the VC. They will usually be present in all VCs but for our first understanding of their usage, we can ignore them.&lt;/p&gt;
 &lt;p&gt;In this example, I’ve chosen to put the public keys directly in the VC. The &lt;code&gt;proof.creator&lt;/code&gt; and &lt;code&gt;credentialSubject.id&lt;/code&gt; fields are respectively the public keys of the issuer and the subject.&lt;/p&gt;
 &lt;p&gt;In a real application, they would be a 
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Decentralized_identifier&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Decentralized Identifier&lt;/a&gt; (DID) which would point to the keys.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A DID can resolve to multiple public keys&lt;/li&gt;
-&lt;li&gt;A DID enable the rotatation of these keys&lt;/li&gt;
+&lt;li&gt;A DID enable the rotation of these keys&lt;/li&gt;
 &lt;li&gt;A DID can resolve to service endpoints&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Note: If you look at 
@@ -166,11 +166,11 @@ func SignProof(keys KeyPair, docToSign) Proof {
 &lt;/p&gt;
 &lt;p&gt;Now that our subject has its degree, he can present it to an employer.&lt;/p&gt;
 &lt;p&gt;You may be thinking: well, in the real world, I just show my credential to the verifier and that’s it.&lt;/p&gt;
-&lt;p&gt;Except, there is moment when you give your driving licence to a police officer where he checks that your face looks like the photo on your ID. What is this check for?&lt;/p&gt;
+&lt;p&gt;Except, there is this moment when you give your driving license to a police officer where he checks that your face looks like the photo on your ID. What is this check for?&lt;/p&gt;
 &lt;p&gt;.&lt;/p&gt;
 &lt;p&gt;.&lt;/p&gt;
 &lt;p&gt;Found it? It’s to check that you are the real owner of the credential. The police officer wants to make sure you didn’t happen to give him a credential about someone else.&lt;/p&gt;
-&lt;p&gt;How does this step translates in the digital world?&lt;/p&gt;
+&lt;p&gt;How does this step translate in the digital world?&lt;/p&gt;
 &lt;p&gt;It’s what we call the &lt;strong&gt;Presentation&lt;/strong&gt; of the credential.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;To make sure the subject presents a credential that is his, the verifier asks him to sign the credential.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;You may think: we are coming back to the same problem. The subject could steal an old presentation and give it to the verifier.&lt;/p&gt;
@@ -251,7 +251,7 @@ func (s Subject) SignPresentation(credentials Credential, nonce []byte) (
 &lt;li&gt;The presentation is correctly signed by the subject.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The first check is easily done: Are the &lt;code&gt;proof.created&lt;/code&gt; and &lt;code&gt;credential.credentialSubject.id&lt;/code&gt; equal?&lt;/p&gt;
-&lt;p&gt;The two others verifies that the signature match the public key and the content the proof is about (the credential or the presentation).&lt;/p&gt;
+&lt;p&gt;The two others verifies that the signature matches the public key and the content the proof is about (the credential or the presentation).&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func verifiesSignature(proof Proof, signedDoc []byte) bool {
 	pubKey := proof.Creator
 	signature := proof.Signature
@@ -284,7 +284,7 @@ func (v Verifier) VerifiesPresentation(presentation Presentation) (err error) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;“VC are just signed JSON.”&lt;/p&gt;
+&lt;p&gt;“VCs are just signed JSON.”&lt;/p&gt;
 &lt;p&gt;Although they are new, obscure and not currently common aren’t so scary once you get to play them.&lt;/p&gt;
 &lt;p&gt;Hope this was useful.&lt;/p&gt;
 &lt;p&gt;Valentin, signing off 🖋️&lt;/p&gt;
