@@ -5,12 +5,79 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 05 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 19 Jun 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/profile_valentin.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>The Blockchain will Replace your Backend</title>
+      <link>/post/blockchain-backend/</link>
+      <pubDate>Sun, 19 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>/post/blockchain-backend/</guid>
+      <description>&lt;p&gt;What if we could stop wasting most of our development time re-developing the same thing again and again?&lt;/p&gt;
+&lt;p&gt;The feeling I got whenever starting a new hobby project is that before getting to the meat and having fun, I had to spend a significant amount of time doing trivial stuff.&lt;/p&gt;
+&lt;p&gt;On my latest hobby project, I discovered there was an area where developers stopped wasting their time.&lt;/p&gt;
+&lt;p&gt;Usually, a new project starts like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create front and basic API&lt;/li&gt;
+&lt;li&gt;Create a quick docker-compose for ease of development (maybe)&lt;/li&gt;
+&lt;li&gt;Create a local DB, connect your backend to it.&lt;/li&gt;
+&lt;li&gt;Probably you have users, so setup authentication&lt;/li&gt;
+&lt;li&gt;Get to the meat of your project&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By the time I get to (5), I lost excitement. On my last project though, it felt different.&lt;/p&gt;
+&lt;p&gt;As the title gave away, this project was in the (so-called) web 3 space.&lt;/p&gt;
+&lt;h2 id=&#34;fast-dev&#34;&gt;🍔 Fast Dev&lt;/h2&gt;
+&lt;p&gt;Originally I had a lot of misgivings about the area. What can you do with a blockchain that you can’t do with a database? What value does it bring?&lt;/p&gt;
+&lt;p&gt;IMO there is a 70% chance that this whole web 3 thing will be a flop. But if the other 30% comes to happen, it will be big. So it’s 
+&lt;a href=&#34;https://www.jiliac.com/post/cryptoskeptic/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;worth investing&lt;/a&gt; time to learn how it works.&lt;/p&gt;
+&lt;p&gt;So off I went on this first learning project. (Live at 
+&lt;a href=&#34;http://invisoo.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;invisoo.com&lt;/a&gt;. I’ll write another blog to talk more about the project and its design decisions.)&lt;/p&gt;
+&lt;p&gt;Here is what starting this project looked like:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create basic front and smart contract&lt;/li&gt;
+&lt;li&gt;Dockerize&lt;/li&gt;
+&lt;li&gt;Get to the meat&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;First shortcut: a contract can serve as both your backend and your DB (i.e. execution and storage). You don’t need to deal with authentication because web 3 users come with an identity in the form of their wallet.&lt;/p&gt;
+&lt;h2 id=&#34;piece-of-the-whole&#34;&gt;🍕Piece of the Whole&lt;/h2&gt;
+&lt;p&gt;Throughout my development, I got the feeling of being able to leverage of “bigger whole”. It starts with user/wallet handling but it goes on&amp;hellip;&lt;/p&gt;
+&lt;p&gt;I felt the inter-connected of web 3 shined by how ubiquitous tokens are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Using 
+&lt;a href=&#34;https://www.openzeppelin.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Open Zeppelin&lt;/a&gt; you can easily customize a token implementation to your needs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img width=&#34;500px&#34; src=&#34;/img/blockchain-backend/open-zeppelin.png&#34;
+alt=&#34;Open Zeppelin Token Wizard&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;New tokens are supported by every wallet without any need for you to do anything.&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://etherscan.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Online transaction explorers&lt;/a&gt; will detect underlying token transfers.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img width=&#34;600px&#34; src=&#34;/img/blockchain-backend/scan.png&#34;
+alt=&#34;A Full Reveal from PolygonScan&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Using tokens make your DApp “pluggable” into an even bigger part of the ecosystem. For example, once you transfer a token to the user, he can use it with any other DApp. For example, he could go and trade it at 
+&lt;a href=&#34;https://uniswap.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Uniswap&lt;/a&gt; even though trading wasn’t in your original design.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(Tokens may not be your go-to design though. I also didn’t consider them at the beginning. I’ll expand on why I modified the design of my project to use tokens in the next blog. I found the implementation easier this way.)&lt;/p&gt;
+&lt;p&gt;To expand on the third point, I found online transaction explorers mind-blowing.&lt;/p&gt;
+&lt;p&gt;You just deploy, you don’t have to do anything and you can visualize every interaction of a user with your contract. This is the benefit of operating on a transparent data layer.&lt;/p&gt;
+&lt;p&gt;You can easily see the current state of your contract, the users and also all the historical transactions that brought us to this state.&lt;/p&gt;
+&lt;h2 id=&#34;the-less-fun&#34;&gt;🥦 The Less Fun&lt;/h2&gt;
+&lt;p&gt;The thing I found buggy is the handling of chains. Which chain is the user connected to? The localhost chain? The test chain? The main chain (i.e. Ethereum).&lt;/p&gt;
+&lt;p&gt;Depending on the chain the user is connected to, we need to rely on a different “provider”. The provider allows our front to read and write the blockchain. It’s sad that we have to rely on a centralized intermediary, but it’s necessary in a world where users don’t run and index the blockchain locally.&lt;/p&gt;
+&lt;p&gt;Another pain I felt while developing is doing math. By default smart contracts only handle integers. In the end, you can just import some library to solve this problem but it’s still messy.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I’m still not sure what value Web 3 brings to the users, but at least I found it does bring value to developers.&lt;/p&gt;
+&lt;p&gt;The problems are small compared to the value provided by being part of a big ecosystem.&lt;/p&gt;
+&lt;p&gt;Operating on a transparent data layer like the blockchain will not fit every design though. All data has to be public.&lt;/p&gt;
+&lt;p&gt;Web 3 people would say that’s not a bug but a feature 😛&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hello World to Verifiable Credentials</title>
