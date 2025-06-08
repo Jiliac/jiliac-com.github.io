@@ -35,7 +35,10 @@
 &lt;p&gt;Let me show you what I mean with poker.&lt;/p&gt;
 &lt;p&gt;Professional poker players use tools called &amp;ldquo;solvers&amp;rdquo;—sophisticated algorithms that calculate mathematically optimal strategy. Think of them as the chess engines of poker. Tools like PioSOLVER and GTO Wizard can tell you the perfect play in any situation.&lt;/p&gt;
 &lt;p&gt;But they&amp;rsquo;re designed for experts. The interfaces look like this:&lt;/p&gt;
-&lt;p&gt;![Complex solver interface with ranges, frequencies, and technical data that&amp;rsquo;s overwhelming for beginners]&lt;/p&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;Complex solver interface with ranges, frequencies, and technical data that&#39;s overwhelming for beginners&#34;
+    src=&#34;/img/gto_wiz.jpg&#34; width=&#34;600px&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;Monthly subscriptions run €100+. Setup requires technical knowledge. The learning curve is brutal. One forum user described trying to learn PioSOLVER as &amp;ldquo;requiring a fair amount of technical knowledge&amp;hellip; for a lot of players, it was a frustrating experience.&amp;rdquo;&lt;/p&gt;
 &lt;h2 id=&#34;the-obvious-wrong-solution&#34;&gt;The Obvious (Wrong) Solution&lt;/h2&gt;
 &lt;p&gt;Most people would see this and think: &amp;ldquo;Just put a chat interface on top of the solver!&amp;rdquo;&lt;/p&gt;

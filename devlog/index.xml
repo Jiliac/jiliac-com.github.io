@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devlogs | Valentin Manès</title>
+    <link>/devlog/</link>
+      <atom:link href="/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <description>Devlogs</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/profile_valentin.png</url>
+      <title>Devlogs</title>
+      <link>/devlog/</link>
+    </image>
+    
+    <item>
+      <title>Why Everyone&#39;s Missing the Real LLM Opportunity (And How I&#39;m Building It)</title>
+      <link>/devlog/week-1/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/devlog/week-1/</guid>
+      <description>&lt;p&gt;Everyone&amp;rsquo;s building ChatGPT wrappers. But they&amp;rsquo;re missing the real opportunity.&lt;/p&gt;
+&lt;h2 id=&#34;the-great-misunderstanding&#34;&gt;The Great Misunderstanding&lt;/h2&gt;
+&lt;p&gt;Walk through any AI conference today and you&amp;rsquo;ll see the same pattern everywhere: take an existing product, add a conversational interface, slap &amp;ldquo;AI-powered&amp;rdquo; on the marketing page. Database queries become &amp;ldquo;natural language analytics.&amp;rdquo; Search engines get chat interfaces. Productivity tools gain conversational layers.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s 2007 all over again.&lt;/p&gt;
+&lt;p&gt;When the iPhone launched, most people thought &amp;ldquo;it&amp;rsquo;s just a better phone with internet.&amp;rdquo; They completely missed that we were about to see entirely new application categories emerge—Uber, Instagram, Tinder. Apps that couldn&amp;rsquo;t exist before the smartphone, not because the technology wasn&amp;rsquo;t ready, but because the interaction paradigm wasn&amp;rsquo;t there.&lt;/p&gt;
+&lt;p&gt;Today, we&amp;rsquo;re making the same mistake with LLMs. We&amp;rsquo;re thinking too small.&lt;/p&gt;
+&lt;h2 id=&#34;what-llms-actually-enable&#34;&gt;What LLMs Actually Enable&lt;/h2&gt;
+&lt;p&gt;The real opportunity isn&amp;rsquo;t making existing tools more conversational. It&amp;rsquo;s creating entirely new experiences that were never economically viable before:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Personalized expertise at scale:&lt;/strong&gt; AI that adapts to individual knowledge gaps and communication styles&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context-aware coaching:&lt;/strong&gt; Understanding not just what you&amp;rsquo;re asking, but why you&amp;rsquo;re confused&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time learning:&lt;/strong&gt; Immediate feedback loops for complex decisions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The pattern to look for isn&amp;rsquo;t &amp;ldquo;how do we make X more accessible?&amp;rdquo; It&amp;rsquo;s &amp;ldquo;what expertise bottlenecks can we eliminate entirely?&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;a-case-study-in-missing-the-point&#34;&gt;A Case Study in Missing the Point&lt;/h2&gt;
+&lt;p&gt;Let me show you what I mean with poker.&lt;/p&gt;
+&lt;p&gt;Professional poker players use tools called &amp;ldquo;solvers&amp;rdquo;—sophisticated algorithms that calculate mathematically optimal strategy. Think of them as the chess engines of poker. Tools like PioSOLVER and GTO Wizard can tell you the perfect play in any situation.&lt;/p&gt;
+&lt;p&gt;But they&amp;rsquo;re designed for experts. The interfaces look like this:&lt;/p&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;Complex solver interface with ranges, frequencies, and technical data that&#39;s overwhelming for beginners&#34;
+    src=&#34;/img/gto_wiz.jpg&#34; width=&#34;600px&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Monthly subscriptions run €100+. Setup requires technical knowledge. The learning curve is brutal. One forum user described trying to learn PioSOLVER as &amp;ldquo;requiring a fair amount of technical knowledge&amp;hellip; for a lot of players, it was a frustrating experience.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;the-obvious-wrong-solution&#34;&gt;The Obvious (Wrong) Solution&lt;/h2&gt;
+&lt;p&gt;Most people would see this and think: &amp;ldquo;Just put a chat interface on top of the solver!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Take GTO Wizard&amp;rsquo;s complex output, add a conversational wrapper, maybe simplify the display a bit. Same underlying complexity, slightly friendlier packaging.&lt;/p&gt;
+&lt;p&gt;This is exactly the kind of &amp;ldquo;AI wrapper&amp;rdquo; thinking that misses the real opportunity.&lt;/p&gt;
+&lt;h2 id=&#34;the-real-opportunity-entirely-new-experiences&#34;&gt;The Real Opportunity: Entirely New Experiences&lt;/h2&gt;
+&lt;p&gt;Instead of asking &amp;ldquo;how do we make solvers easier to use?&amp;rdquo; I asked &amp;ldquo;what coaching experiences were never possible before?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;That led me to build 
+&lt;a href=&#34;https://askpoker.ai&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AskPoker.ai&lt;/a&gt;. Here&amp;rsquo;s what a session looks like:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You:&lt;/strong&gt; &amp;ldquo;I raised pocket nines from middle position, got called by button and big blind. Flop came A-9-5 rainbow. I bet, button folded, big blind raised. Should I call or re-raise?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AskPoker:&lt;/strong&gt; &amp;ldquo;Re-raise for value! You have a set (extremely strong) against a range that&amp;rsquo;s mostly top pair. The big blind&amp;rsquo;s raise on this dry board indicates they likely have an ace and want to build a pot. Your set is way ahead of their range. Re-raising accomplishes three things: builds the pot with your strong hand, gets value from weaker holdings that might call, and maintains initiative. The solver actually recommends re-raising here about 85% of the time with your exact holding.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t a better interface for existing tools. It&amp;rsquo;s a fundamentally new interaction that bridges expert algorithms with human communication patterns.&lt;/p&gt;
+&lt;h2 id=&#34;why-this-works&#34;&gt;Why This Works&lt;/h2&gt;
+&lt;p&gt;The magic happens in the gap between computational power and human understanding:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Natural expression:&lt;/strong&gt; Describe hands like talking to a friend, not inputting technical parameters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instant expertise:&lt;/strong&gt; Get solver-backed analysis without learning complex software&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contextual explanations:&lt;/strong&gt; AI adapts explanations to your level and explains the &amp;ldquo;why&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Immediate feedback:&lt;/strong&gt; Review confusing hands right after they happen&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Early validation is promising. When I manually provide this kind of analysis on poker forums, users specifically thank me while ignoring other responses in the same threads. There&amp;rsquo;s real demand for this bridge between expert knowledge and accessible communication.&lt;/p&gt;
+&lt;h2 id=&#34;the-bigger-pattern&#34;&gt;The Bigger Pattern&lt;/h2&gt;
+&lt;p&gt;Poker is just one example. The pattern applies anywhere you find:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex domains&lt;/strong&gt; where expertise is expensive and hard to access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;High-context decisions&lt;/strong&gt; where generic advice isn&amp;rsquo;t enough&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Learning-oriented users&lt;/strong&gt; who want to understand, not just get answers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Think legal strategy coaching for small firms. Medical decision support for patients navigating treatment options. Business strategy guidance for specific competitive situations.&lt;/p&gt;
+&lt;p&gt;These aren&amp;rsquo;t &amp;ldquo;better interfaces for existing tools.&amp;rdquo; They&amp;rsquo;re entirely new coaching experiences that eliminate expertise bottlenecks.&lt;/p&gt;
+&lt;h2 id=&#34;the-window-wont-stay-open&#34;&gt;The Window Won&amp;rsquo;t Stay Open&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;re still early. Most LLM applications remain glorified chatbots for existing workflows. But that&amp;rsquo;s changing fast.&lt;/p&gt;
+&lt;p&gt;The first movers who identify these expertise gaps and build new experiences around them will establish category-defining positions. Just like Uber didn&amp;rsquo;t win by making taxi companies more efficient—they eliminated the taxi bottleneck entirely.&lt;/p&gt;
+&lt;p&gt;Traditional solver companies face an innovator&amp;rsquo;s dilemma. Adding conversational AI would cannibalize their complex, high-priced products. But someone will build these bridges between expert systems and human understanding.&lt;/p&gt;
+&lt;h2 id=&#34;what-this-means-for-you&#34;&gt;What This Means for You&lt;/h2&gt;
+&lt;p&gt;The smartphone moment for LLMs isn&amp;rsquo;t about making everything conversational. It&amp;rsquo;s about enabling entirely new experiences that were never economically viable before.&lt;/p&gt;
+&lt;p&gt;Look for expertise bottlenecks in domains you know well. Where do people struggle to access or apply complex knowledge? Where are the gaps between what algorithms can compute and what humans can understand?&lt;/p&gt;
+&lt;p&gt;Those gaps are where the next generation of applications will emerge.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Try the conversational expertise approach yourself at 
+&lt;a href=&#34;https://askpoker.ai&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;askpoker.ai&lt;/a&gt;, or connect with me to explore similar opportunities in your domain. The real LLM revolution is just getting started.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
