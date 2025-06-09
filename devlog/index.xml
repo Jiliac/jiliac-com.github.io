@@ -13,13 +13,15 @@
     </image>
     
     <item>
-      <title>AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP</title>
+      <title>AskPoker.ai Log #1: Reality Check and Pivot to Concierge MVP</title>
       <link>/devlog/1/</link>
       <pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate>
       <guid>/devlog/1/</guid>
       <description>&lt;h1 id=&#34;askpokerai-week-1-reality-check-and-pivot-to-concierge-mvp&#34;&gt;AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP&lt;/h1&gt;
 &lt;p&gt;This week I learned some hard truths about my assumptions building 
-&lt;a href=&#34;https://www.jiliac.com/post/askpoker/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AskPoker.ai&lt;/a&gt;. Time for radical honesty about what&amp;rsquo;s working and what isn&amp;rsquo;t.&lt;/p&gt;
+&lt;a href=&#34;https://www.askpoker.ai/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AskPoker.ai&lt;/a&gt;. Time for radical honesty about what&amp;rsquo;s working and what isn&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;For context, AskPoker.ai is my attempt to build a conversational AI poker coach that gives recreational players instant, solver-backed analysis of their hands. Instead of wrestling with complex software like PioSOLVER, players can just describe their hand in plain English and get clear strategic advice. I&amp;rsquo;ve been working on this for about 6 months, and this is my first public update on the journey. You can read more about the original vision in my 
+&lt;a href=&#34;https://www.jiliac.com/post/askpoker/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;announcement post&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;what-i-tried-forum-engagement-experiment&#34;&gt;What I Tried: Forum Engagement Experiment&lt;/h2&gt;
 &lt;p&gt;My plan was simple: test demand by answering poker hands on Reddit and 2+2 with AskPoker analysis. Use the tool to generate insights, then sign responses with &amp;ldquo;made with askpoker.ai&amp;rdquo; to see if people were interested in the platform.&lt;/p&gt;
 &lt;p&gt;The goal was to validate the core value proposition while driving some early traffic. What I found instead was a masterclass in why assumptions need real-world testing.&lt;/p&gt;
