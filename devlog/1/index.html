@@ -27,10 +27,10 @@
   
     
   
-  <meta name="description" content="Most people are building LLM wrappers—missing the real revolution: creating entirely new experiences that eliminate expertise bottlenecks.">
+  <meta name="description" content="My AI poker coach failed the Reddit test. Here&#39;s what broke, what worked, and why I&#39;m switching to manual validation.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/devlog/week-1/">
+  <link rel="alternate" hreflang="en-us" href="/devlog/1/">
 
   
 
@@ -220,7 +220,7 @@
   <link rel="icon" type="image/png" href="/img/coffee.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/coffee.png">
 
-  <link rel="canonical" href="/devlog/week-1/">
+  <link rel="canonical" href="/devlog/1/">
 
   
   
@@ -240,15 +240,15 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Valentin Manès">
-  <meta property="og:url" content="/devlog/week-1/">
-  <meta property="og:title" content="Why Everyone&#39;s Missing the Real LLM Opportunity (And How I&#39;m Building It) | Valentin Manès">
-  <meta property="og:description" content="Most people are building LLM wrappers—missing the real revolution: creating entirely new experiences that eliminate expertise bottlenecks."><meta property="og:image" content="https://jiliac.com/devlog/week-1/featured.png">
-  <meta property="twitter:image" content="https://jiliac.com/devlog/week-1/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="/devlog/1/">
+  <meta property="og:title" content="AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP | Valentin Manès">
+  <meta property="og:description" content="My AI poker coach failed the Reddit test. Here&#39;s what broke, what worked, and why I&#39;m switching to manual validation."><meta property="og:image" content="https://jiliac.com/devlog/1/featured.jpg">
+  <meta property="twitter:image" content="https://jiliac.com/devlog/1/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2025-06-08T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2025-06-09T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2025-06-08T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-06-09T00:00:00&#43;00:00">
   
 
   
@@ -267,7 +267,7 @@
 
 
 
-  <title>Why Everyone&#39;s Missing the Real LLM Opportunity (And How I&#39;m Building It) | Valentin Manès</title>
+  <title>AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP | Valentin Manès</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -559,7 +559,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>Why Everyone&#39;s Missing the Real LLM Opportunity (And How I&#39;m Building It)</h1>
+  <h1>AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP</h1>
 
   
 
@@ -577,7 +577,7 @@
     
       
     
-    Jun 8, 2025
+    Jun 9, 2025
   </span>
   
 
@@ -612,9 +612,9 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 720px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
   <div style="position: relative">
-    <img src="/devlog/week-1/featured_hueea8dc76af3cc2d563244de1075fc65b_1990761_720x0_resize_lanczos_3.png" alt="" class="featured-image">
+    <img src="/devlog/1/featured_hu02aa61ae1d9de35cbe238d2676170cb9_168265_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
     
   </div>
 </div>
@@ -624,69 +624,55 @@
   <div class="article-container">
 
     <div class="text-justify article-style">
-      <p>Everyone&rsquo;s building ChatGPT wrappers. But they&rsquo;re missing the real opportunity.</p>
-<h2 id="the-great-misunderstanding">The Great Misunderstanding</h2>
-<p>Walk through any AI conference today and you&rsquo;ll see the same pattern everywhere: take an existing product, add a conversational interface, slap &ldquo;AI-powered&rdquo; on the marketing page. Database queries become &ldquo;natural language analytics.&rdquo; Search engines get chat interfaces. Productivity tools gain conversational layers.</p>
-<p>It&rsquo;s 2007 all over again.</p>
-<p>When the iPhone launched, most people thought &ldquo;it&rsquo;s just a better phone with internet.&rdquo; They completely missed that we were about to see entirely new application categories emerge—Uber, Instagram, Tinder. Apps that couldn&rsquo;t exist before the smartphone, not because the technology wasn&rsquo;t ready, but because the interaction paradigm wasn&rsquo;t there.</p>
-<p>Today, we&rsquo;re making the same mistake with LLMs. We&rsquo;re thinking too small.</p>
-<h2 id="what-llms-actually-enable">What LLMs Actually Enable</h2>
-<p>The real opportunity isn&rsquo;t making existing tools more conversational. It&rsquo;s creating entirely new experiences that were never economically viable before:</p>
+      <h1 id="askpokerai-week-1-reality-check-and-pivot-to-concierge-mvp">AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP</h1>
+<p>This week I learned some hard truths about my assumptions building 
+<a href="https://www.jiliac.com/post/askpoker/" target="_blank" rel="noopener">AskPoker.ai</a>. Time for radical honesty about what&rsquo;s working and what isn&rsquo;t.</p>
+<h2 id="what-i-tried-forum-engagement-experiment">What I Tried: Forum Engagement Experiment</h2>
+<p>My plan was simple: test demand by answering poker hands on Reddit and 2+2 with AskPoker analysis. Use the tool to generate insights, then sign responses with &ldquo;made with askpoker.ai&rdquo; to see if people were interested in the platform.</p>
+<p>The goal was to validate the core value proposition while driving some early traffic. What I found instead was a masterclass in why assumptions need real-world testing.</p>
+<h2 id="hard-truths-discovered">Hard Truths Discovered</h2>
+<h3 id="1-the-product-isnt-ready">1. The Product Isn&rsquo;t Ready</h3>
+<p><strong>Table size limitation</strong>: My backend solver only handles 5-max tables, not the 6+ player tables common in most online games. When users post hands from full ring games, the solver has no data, so the LLM just improvises answers based on general poker knowledge.</p>
+<p>I knew this was a constraint going in, but experiencing it in practice hit different. I now understand I <em>must</em> solve this limitation eventually (though interestingly, in the French market where 5-max cash games dominate, this might not be as critical).</p>
+<p><strong>Scope mismatch</strong>: I built the tool to analyze single decisions (&ldquo;Should I call this river bet?&quot;), but users want comprehensive hand reviews. They want to know where their decisions went wrong across multiple streets, not just get advice on one spot.</p>
+<p><strong>Insufficient backend data</strong>: The solver gives me the optimal action, but lacks the rich context needed for proper explanations - full ranges, equity calculations, expected value, fold equity. Without this data, the LLM fills in gaps with educated guesses that sometimes sound confident but are wrong.</p>
+<p><strong>Basic bugs</strong>: Simple things like currency-to-blind conversion. I expected the LLM to handle this automatically when calling the backend, but it doesn&rsquo;t.</p>
+<h3 id="2-market-reality-check">2. Market Reality Check</h3>
+<p><strong>Forum fragmentation</strong>: Even active communities like 2+2 and Reddit aren&rsquo;t exactly buzzing with activity. There&rsquo;s discussion, but it&rsquo;s not the vibrant marketplace of poker questions I had imagined.</p>
+<p><strong>French market gap</strong>: I found essentially no active French poker discussion platforms. This surprised me - I expected at least some local communities.</p>
+<p><strong>User behavior insight</strong>: Players consume more content (YouTube, training sites) than they engage in forum discussions. This suggests my marketing approach needs to meet users where they actually spend time, not where I assumed they&rsquo;d be.</p>
+<h3 id="3-the-concierge-mvp-reality-check">3. The Concierge MVP Reality Check</h3>
+<p>Here&rsquo;s where brutal honesty matters: my initial assessment was too rosy.</p>
+<p><strong>Actual results</strong>: About 75% of my responses were ignored, ~15% got genuine positive responses from users (actual replies thanking me for the analysis), and ~10% were called out for containing errors where the LLM had hallucinated explanations.</p>
+<p><strong>Reddit truth</strong>: People might not always give positive feedback when you help them, but they <em>never</em> let wrong analysis slide. Every mistake gets caught and corrected, often harshly.</p>
+<p><strong>Key insight</strong>: Demand absolutely exists for expert-level analysis in accessible language, but the quality bar is unforgiving. There&rsquo;s no room for &ldquo;pretty good&rdquo; when giving strategic advice.</p>
+<h2 id="the-pivot-from-product-to-process">The Pivot: From Product to Process</h2>
+<h3 id="why-concierge-mvp-makes-sense">Why Concierge MVP Makes Sense</h3>
+<p>The product is too broken for self-service user testing, but the manual approach validates something crucial: the core value proposition works when executed correctly.</p>
+<p>More importantly, I need to answer a fundamental question: <strong>Are recreational players ready to trust an AI coach?</strong> This is about more than just technical capability - it&rsquo;s about user psychology and market readiness.</p>
+<p>While I&rsquo;m confident I can solve the technical issues given enough time, creating trust is a different challenge entirely. This requires marketing and communication skills that aren&rsquo;t in my natural wheelhouse, making validation even more critical.</p>
+<p>My new process: users message me via email or Discord for hand analysis. I use the backend tool to generate insights, then manually refine and explain the analysis. This creates a controlled environment to test whether players accept AI-driven coaching when it&rsquo;s delivered thoughtfully.</p>
+<h3 id="new-strategy-content-led-growth">New Strategy: Content-Led Growth</h3>
+<p><strong>Blog foundation</strong>: Generate poker-specific content using the LLM+solver combination. This content becomes source material for TikTok scripts and other marketing efforts - creating a scalable content system.</p>
+<p><strong>TikTok expansion</strong>: Meet users where they actually are, not in forums. Poker content performs well on TikTok, and the format suits quick hand analysis and strategy tips.</p>
+<p><strong>Novel LLM usage</strong>: This isn&rsquo;t just automating existing tasks - I&rsquo;m using AI as both an exploration agent (to probe solver outputs) and as a writer (to explain complex concepts clearly). This combination creates content capabilities that didn&rsquo;t exist before.</p>
+<p><strong>Transparent AI positioning</strong>: Brand myself as &ldquo;Human + AI&rdquo; poker analysis. Be upfront about using AI tools while emphasizing human judgment and experience.</p>
+<h2 id="technical-priorities-despite-no-product-development">Technical Priorities (Despite &ldquo;No Product Development&rdquo;)</h2>
+<p>I said I&rsquo;d stop building features, but I need to fix the solver-LLM pipeline to eliminate hallucinations. The focus shifts from user-facing features to content creation tools:</p>
 <ul>
-<li><strong>Personalized expertise at scale:</strong> AI that adapts to individual knowledge gaps and communication styles</li>
-<li><strong>Context-aware coaching:</strong> Understanding not just what you&rsquo;re asking, but why you&rsquo;re confused</li>
-<li><strong>Real-time learning:</strong> Immediate feedback loops for complex decisions</li>
+<li>Fix solver data output to provide complete strategic context</li>
+<li>Build reliable solver-LLM pipeline for scalable content creation</li>
+<li>Develop the infrastructure needed for consistent, accurate analysis</li>
 </ul>
-<p>The pattern to look for isn&rsquo;t &ldquo;how do we make X more accessible?&rdquo; It&rsquo;s &ldquo;what expertise bottlenecks can we eliminate entirely?&rdquo;</p>
-<h2 id="a-case-study-in-missing-the-point">A Case Study in Missing the Point</h2>
-<p>Let me show you what I mean with poker.</p>
-<p>Professional poker players use tools called &ldquo;solvers&rdquo;—sophisticated algorithms that calculate mathematically optimal strategy. Think of them as the chess engines of poker. Tools like PioSOLVER and GTO Wizard can tell you the perfect play in any situation.</p>
-<p>But they&rsquo;re designed for experts. The interfaces look like this:</p>
-<p align="center" >
-  <img alt="Complex solver interface with ranges, frequencies, and technical data that's overwhelming for beginners"
-    src="/img/gto_wiz.jpg" width="600px" />
-</p>
-<p>Monthly subscriptions run €100+. Setup requires technical knowledge. The learning curve is brutal. One forum user described trying to learn PioSOLVER as &ldquo;requiring a fair amount of technical knowledge&hellip; for a lot of players, it was a frustrating experience.&rdquo;</p>
-<h2 id="the-obvious-wrong-solution">The Obvious (Wrong) Solution</h2>
-<p>Most people would see this and think: &ldquo;Just put a chat interface on top of the solver!&rdquo;</p>
-<p>Take GTO Wizard&rsquo;s complex output, add a conversational wrapper, maybe simplify the display a bit. Same underlying complexity, slightly friendlier packaging.</p>
-<p>This is exactly the kind of &ldquo;AI wrapper&rdquo; thinking that misses the real opportunity.</p>
-<h2 id="the-real-opportunity-entirely-new-experiences">The Real Opportunity: Entirely New Experiences</h2>
-<p>Instead of asking &ldquo;how do we make solvers easier to use?&rdquo; I asked &ldquo;what coaching experiences were never possible before?&rdquo;</p>
-<p>That led me to build 
-<a href="https://askpoker.ai" target="_blank" rel="noopener">AskPoker.ai</a>. Here&rsquo;s what a session looks like:</p>
-<p><strong>You:</strong> &ldquo;I raised pocket nines from middle position, got called by button and big blind. Flop came A-9-5 rainbow. I bet, button folded, big blind raised. Should I call or re-raise?&rdquo;</p>
-<p><strong>AskPoker:</strong> &ldquo;Re-raise for value! You have a set (extremely strong) against a range that&rsquo;s mostly top pair. The big blind&rsquo;s raise on this dry board indicates they likely have an ace and want to build a pot. Your set is way ahead of their range. Re-raising accomplishes three things: builds the pot with your strong hand, gets value from weaker holdings that might call, and maintains initiative. The solver actually recommends re-raising here about 85% of the time with your exact holding.&rdquo;</p>
-<p>This isn&rsquo;t a better interface for existing tools. It&rsquo;s a fundamentally new interaction that bridges expert algorithms with human communication patterns.</p>
-<h2 id="why-this-works">Why This Works</h2>
-<p>The magic happens in the gap between computational power and human understanding:</p>
-<ul>
-<li><strong>Natural expression:</strong> Describe hands like talking to a friend, not inputting technical parameters</li>
-<li><strong>Instant expertise:</strong> Get solver-backed analysis without learning complex software</li>
-<li><strong>Contextual explanations:</strong> AI adapts explanations to your level and explains the &ldquo;why&rdquo;</li>
-<li><strong>Immediate feedback:</strong> Review confusing hands right after they happen</li>
-</ul>
-<p>Early validation is promising. When I manually provide this kind of analysis on poker forums, users specifically thank me while ignoring other responses in the same threads. There&rsquo;s real demand for this bridge between expert knowledge and accessible communication.</p>
-<h2 id="the-bigger-pattern">The Bigger Pattern</h2>
-<p>Poker is just one example. The pattern applies anywhere you find:</p>
-<ul>
-<li><strong>Complex domains</strong> where expertise is expensive and hard to access</li>
-<li><strong>High-context decisions</strong> where generic advice isn&rsquo;t enough</li>
-<li><strong>Learning-oriented users</strong> who want to understand, not just get answers</li>
-</ul>
-<p>Think legal strategy coaching for small firms. Medical decision support for patients navigating treatment options. Business strategy guidance for specific competitive situations.</p>
-<p>These aren&rsquo;t &ldquo;better interfaces for existing tools.&rdquo; They&rsquo;re entirely new coaching experiences that eliminate expertise bottlenecks.</p>
-<h2 id="the-window-wont-stay-open">The Window Won&rsquo;t Stay Open</h2>
-<p>We&rsquo;re still early. Most LLM applications remain glorified chatbots for existing workflows. But that&rsquo;s changing fast.</p>
-<p>The first movers who identify these expertise gaps and build new experiences around them will establish category-defining positions. Just like Uber didn&rsquo;t win by making taxi companies more efficient—they eliminated the taxi bottleneck entirely.</p>
-<p>Traditional solver companies face an innovator&rsquo;s dilemma. Adding conversational AI would cannibalize their complex, high-priced products. But someone will build these bridges between expert systems and human understanding.</p>
-<h2 id="what-this-means-for-you">What This Means for You</h2>
-<p>The smartphone moment for LLMs isn&rsquo;t about making everything conversational. It&rsquo;s about enabling entirely new experiences that were never economically viable before.</p>
-<p>Look for expertise bottlenecks in domains you know well. Where do people struggle to access or apply complex knowledge? Where are the gaps between what algorithms can compute and what humans can understand?</p>
-<p>Those gaps are where the next generation of applications will emerge.</p>
-<hr>
-<p><em>Try the conversational expertise approach yourself at 
-<a href="https://askpoker.ai" target="_blank" rel="noopener">askpoker.ai</a>, or connect with me to explore similar opportunities in your domain. The real LLM revolution is just getting started.</em></p>
+<h2 id="whats-next">What&rsquo;s Next</h2>
+<p><strong>Weekly devlogs</strong>: Continue documenting discoveries and pivots transparently.</p>
+<p><strong>Manual hand analysis</strong>: Build audience and expertise through direct engagement while testing AI coach acceptance.</p>
+<p><strong>Content system development</strong>: Create the infrastructure for scalable marketing through AI-assisted content creation.</p>
+<p><strong>Eventual transition</strong>: Move from concierge to automated product once the core experience is proven and technical limitations are resolved.</p>
+<h2 id="closing-reflection">Closing Reflection</h2>
+<p>Sometimes the best product development is realizing when to stop developing and start validating. This week taught me that building in public means being honest about failures, not just successes.</p>
+<p>The forum experiment didn&rsquo;t go as planned, but it revealed something more valuable than validation: it showed me exactly what needs to be fixed and where my assumptions were wrong. That&rsquo;s worth more than a hundred positive feedback comments on a fundamentally flawed approach.</p>
+<p>Next week: Testing how far I can push the LLM+solver integration to create a scalable marketing system. Building out the new website with proper landing page and CMS, then seeing what kind of poker content I can generate automatically.</p>
 
     </div>
 
@@ -710,7 +696,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/devlog/week-1/&amp;text=Why%20Everyone&amp;#39;s%20Missing%20the%20Real%20LLM%20Opportunity%20%28And%20How%20I&amp;#39;m%20Building%20It%29" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/devlog/1/&amp;text=AskPoker.ai%20Week%201:%20Reality%20Check%20and%20Pivot%20to%20Concierge%20MVP" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -723,7 +709,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/devlog/week-1/&amp;title=Why%20Everyone&amp;#39;s%20Missing%20the%20Real%20LLM%20Opportunity%20%28And%20How%20I&amp;#39;m%20Building%20It%29" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/devlog/1/&amp;title=AskPoker.ai%20Week%201:%20Reality%20Check%20and%20Pivot%20to%20Concierge%20MVP" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -736,7 +722,7 @@
       
       
       <li>
-        <a href="https://reddit.com/submit?url=/devlog/week-1/&amp;title=Why%20Everyone&amp;#39;s%20Missing%20the%20Real%20LLM%20Opportunity%20%28And%20How%20I&amp;#39;m%20Building%20It%29" target="_blank" rel="noopener" class="share-btn-reddit">
+        <a href="https://reddit.com/submit?url=/devlog/1/&amp;title=AskPoker.ai%20Week%201:%20Reality%20Check%20and%20Pivot%20to%20Concierge%20MVP" target="_blank" rel="noopener" class="share-btn-reddit">
           <i class="fab fa-reddit-alien"></i>
         </a>
       </li>
