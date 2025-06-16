@@ -5,12 +5,91 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Valentin Manès</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 09 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 16 Jun 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/profile_valentin.png</url>
       <title>Valentin Manès</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>AskPoker.ai Dev Log #2: Building a Content Engine and Finding My Market</title>
+      <link>/devlog/2/</link>
+      <pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/devlog/2/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Week 2 of building 
+&lt;a href=&#34;https://askpoker.ai&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AskPoker.ai&lt;/a&gt; in public. This week: technical progress, content creation infrastructure, and a strategic market pivot.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;technical-progress-building-the-data-pipeline&#34;&gt;Technical Progress: Building the Data Pipeline&lt;/h2&gt;
+&lt;p&gt;Last week&amp;rsquo;s experiments made it clear I needed better data from my solver to create meaningful content. So I built a comprehensive evaluation function:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type EvalReport struct {
+    ActionEVs []float32  // Expected value for each possible action
+    Equity    float32    // Current hand equity
+    EQRs      []float32  // Equity realization by action
+    AvgPolicy []float64  // Solver&#39;s recommended action frequencies
+    AvgEquity float32    // Average equity across opponent range
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This gives me everything needed to explain &lt;em&gt;why&lt;/em&gt; a play is optimal, not just &lt;em&gt;what&lt;/em&gt; to do. I wrote a script that runs this for every decision point in a hand, creating a complete strategic narrative.&lt;/p&gt;
+&lt;h3 id=&#34;the-bottleneck&#34;&gt;The Bottleneck&lt;/h3&gt;
+&lt;p&gt;Here&amp;rsquo;s where past shortcuts caught up with me. Generating game states by sampling from subgames is painfully slow. Why? A month ago, I took a shortcut in how I handle range distributions. Instead of maintaining explicit range objects with hand probabilities, I used a simpler approach that now makes sampling computationally expensive.&lt;/p&gt;
+&lt;p&gt;The fix is straightforward – properly maintain range objects throughout the calculation. But it means rewriting a chunk of the solver infrastructure. For now, turn and river analysis is essentially broken, limiting me to flop-only content.&lt;/p&gt;
+&lt;p&gt;I decided to defer this fix. Why spend days on technical debt when I still need to validate whether anyone wants this product?&lt;/p&gt;
+&lt;h2 id=&#34;content-creation-engine-from-data-to-articles&#34;&gt;Content Creation Engine: From Data to Articles&lt;/h2&gt;
+&lt;p&gt;Instead of perfecting the solver, I built a content generation pipeline:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Data Generation&lt;/strong&gt;: Run EvalHand for each decision point&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI Analysis&lt;/strong&gt;: Feed each situation to an LLM for strategic interpretation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outline Creation&lt;/strong&gt;: Combine solver data + manual context → LLM creates article outline&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Human Review&lt;/strong&gt;: I review and adjust the outline&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft Generation&lt;/strong&gt;: LLM writes the first draft&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Final Edit&lt;/strong&gt;: Human polish and fact-checking&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The process works. I published two deep-dive analyses:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.askpoker.ai/blog/montenegro-444k-pot&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Montenegro&amp;rsquo;s $444k pot breakdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.askpoker.ai/blog/100k-pocket-tens-that-refused-to-die&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;$100k pocket tens analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Images are still manual (screenshots, generated images), and there&amp;rsquo;s an annoying OpenGraph bug to fix, but the core pipeline produces solid content. Each piece takes about 2-3 hours from data to published article.&lt;/p&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;Complex solver interface with ranges, frequencies, and technical data that&#39;s overwhelming for beginners&#34;
+    src=&#34;/img/blogs.jpg&#34; width=&#34;600px&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;strategic-market-pivot-narrowing-focus&#34;&gt;Strategic Market Pivot: Narrowing Focus&lt;/h2&gt;
+&lt;p&gt;This week forced a reality check on my market ambitions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Original vision&lt;/strong&gt;: Target US/global cash games – the biggest poker market. These games typically run 7-9 players with varying stack sizes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The problems&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;My solver only handles 5-max games&lt;/li&gt;
+&lt;li&gt;I don&amp;rsquo;t actually play these formats (French platforms are segregated)&lt;/li&gt;
+&lt;li&gt;Technical complexity scales exponentially with more players&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;m building for a market I don&amp;rsquo;t understand&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;New direction&lt;/strong&gt;: French 3-player Spin &amp;amp; Go tournaments.&lt;/p&gt;
+&lt;p&gt;Yes, it&amp;rsquo;s a smaller market. But consider:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3 players instead of 9 (dramatically simpler to solve)&lt;/li&gt;
+&lt;li&gt;Short stacks (less strategic complexity)&lt;/li&gt;
+&lt;li&gt;Most popular format in France&lt;/li&gt;
+&lt;li&gt;I actually play this format daily&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This feels like a retreat, but it&amp;rsquo;s strategic. Better to build something that works for a market I understand than to fail chasing a larger opportunity.&lt;/p&gt;
+&lt;h2 id=&#34;the-well-expand-later-trap&#34;&gt;The &amp;ldquo;We&amp;rsquo;ll Expand Later&amp;rdquo; Trap&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m aware of the risk. Countless startups say &amp;ldquo;we&amp;rsquo;ll expand later&amp;rdquo; and become trapped in their initial niche. Their product-market fit becomes so specific that expansion requires starting over.&lt;/p&gt;
+&lt;p&gt;But poker might be different. The core challenge isn&amp;rsquo;t teaching French players different rules – it&amp;rsquo;s getting anyone to trust AI coaching. If I can prove French players will take strategic advice from an AI, that psychological validation should transfer across markets. The technical details (game formats, stack sizes) are engineering problems. Trust is the real barrier.&lt;/p&gt;
+&lt;h2 id=&#34;next-focus-tiktok-experimentation&#34;&gt;Next Focus: TikTok Experimentation&lt;/h2&gt;
+&lt;p&gt;The blog posts are live but not promoted – they&amp;rsquo;re raw material for the next experiment. This week I&amp;rsquo;m pivoting to TikTok content creation. Poker strategy performs well in short-form video, and it&amp;rsquo;s where my target audience actually spends time.&lt;/p&gt;
+&lt;p&gt;The plan: Transform blog analyses into bite-sized video content. Test what resonates. Learn what hooks work. Then scale what succeeds.&lt;/p&gt;
+&lt;h2 id=&#34;looking-ahead&#34;&gt;Looking Ahead&lt;/h2&gt;
+&lt;p&gt;Week 2 taught me to embrace constraints. My solver can&amp;rsquo;t handle everything, so I&amp;rsquo;ll focus on what it can. The global market is too broad, so I&amp;rsquo;ll start with France. Perfect technical solutions can wait until after market validation.&lt;/p&gt;
+&lt;p&gt;Next week: Results from TikTok experiments and the eternal question – when do I fix that sampling bug?&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;What would you build for your local market first? Let me know on 
+&lt;a href=&#34;https://x.com/Jilyac&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twitter&lt;/a&gt; or 
+&lt;a href=&#34;https://discord.gg/syvRUScU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Discord&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>AskPoker.ai Log #1: Reality Check and Pivot to Concierge MVP</title>
@@ -68,6 +147,10 @@
 &lt;p&gt;Sometimes the best product development is realizing when to stop developing and start validating. This week taught me that building in public means being honest about failures, not just successes.&lt;/p&gt;
 &lt;p&gt;The forum experiment didn&amp;rsquo;t go as planned, but it revealed something more valuable than validation: it showed me exactly what needs to be fixed and where my assumptions were wrong. That&amp;rsquo;s worth more than a hundred positive feedback comments on a fundamentally flawed approach.&lt;/p&gt;
 &lt;p&gt;Next week: Testing how far I can push the LLM+solver integration to create a scalable marketing system. Building out the new website with proper landing page and CMS, then seeing what kind of poker content I can generate automatically.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Try the conversational expertise approach yourself at 
+&lt;a href=&#34;https://chat.askpoker.ai&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;askpoker.ai&lt;/a&gt;, or contact me on 
+&lt;a href=&#34;https://discord.gg/syvRUScU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Discord&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -138,7 +221,8 @@
 &lt;p&gt;Those gaps are where the next generation of applications will emerge.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Try the conversational expertise approach yourself at 
-&lt;a href=&#34;https://askpoker.ai&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;askpoker.ai&lt;/a&gt;, or connect with me to explore similar opportunities in your domain. The real LLM revolution is just getting started.&lt;/em&gt;&lt;/p&gt;
+&lt;a href=&#34;https://chat.askpoker.ai&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;askpoker.ai&lt;/a&gt;, or join our 
+&lt;a href=&#34;https://discord.gg/syvRUScU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Discord&lt;/a&gt; to explore similar opportunities in your domain. The real LLM revolution is just getting started.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     

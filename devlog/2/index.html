@@ -27,10 +27,10 @@
   
     
   
-  <meta name="description" content="My AI poker coach failed the Reddit test. Here&#39;s what broke, what worked, and why I&#39;m switching to manual validation.">
+  <meta name="description" content="Building AskPoker.ai week 2: Created a content engine with AI &#43; solver data, pivoting to French Spin &amp; Go market, and launching TikTok experiments.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/devlog/1/">
+  <link rel="alternate" hreflang="en-us" href="/devlog/2/">
 
   
 
@@ -220,7 +220,7 @@
   <link rel="icon" type="image/png" href="/img/coffee.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/coffee.png">
 
-  <link rel="canonical" href="/devlog/1/">
+  <link rel="canonical" href="/devlog/2/">
 
   
   
@@ -240,15 +240,15 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Valentin Manès">
-  <meta property="og:url" content="/devlog/1/">
-  <meta property="og:title" content="AskPoker.ai Log #1: Reality Check and Pivot to Concierge MVP | Valentin Manès">
-  <meta property="og:description" content="My AI poker coach failed the Reddit test. Here&#39;s what broke, what worked, and why I&#39;m switching to manual validation."><meta property="og:image" content="https://jiliac.com/devlog/1/featured.jpg">
-  <meta property="twitter:image" content="https://jiliac.com/devlog/1/featured.jpg"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="/devlog/2/">
+  <meta property="og:title" content="AskPoker.ai Dev Log #2: Building a Content Engine and Finding My Market | Valentin Manès">
+  <meta property="og:description" content="Building AskPoker.ai week 2: Created a content engine with AI &#43; solver data, pivoting to French Spin &amp; Go market, and launching TikTok experiments."><meta property="og:image" content="https://jiliac.com/devlog/2/featured.jpg">
+  <meta property="twitter:image" content="https://jiliac.com/devlog/2/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2025-06-09T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2025-06-16T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2025-06-09T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-06-16T00:00:00&#43;00:00">
   
 
   
@@ -267,7 +267,7 @@
 
 
 
-  <title>AskPoker.ai Log #1: Reality Check and Pivot to Concierge MVP | Valentin Manès</title>
+  <title>AskPoker.ai Dev Log #2: Building a Content Engine and Finding My Market | Valentin Manès</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -559,7 +559,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>AskPoker.ai Log #1: Reality Check and Pivot to Concierge MVP</h1>
+  <h1>AskPoker.ai Dev Log #2: Building a Content Engine and Finding My Market</h1>
 
   
 
@@ -577,7 +577,7 @@
     
       
     
-    Jun 9, 2025
+    Jun 16, 2025
   </span>
   
 
@@ -614,7 +614,7 @@
 
 <div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
   <div style="position: relative">
-    <img src="/devlog/1/featured_hu02aa61ae1d9de35cbe238d2676170cb9_168265_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <img src="/devlog/2/featured_hu02aa61ae1d9de35cbe238d2676170cb9_149785_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
     
   </div>
 </div>
@@ -624,60 +624,76 @@
   <div class="article-container">
 
     <div class="text-justify article-style">
-      <h1 id="askpokerai-week-1-reality-check-and-pivot-to-concierge-mvp">AskPoker.ai Week 1: Reality Check and Pivot to Concierge MVP</h1>
-<p>This week I learned some hard truths about my assumptions building 
-<a href="https://www.askpoker.ai/" target="_blank" rel="noopener">AskPoker.ai</a>. Time for radical honesty about what&rsquo;s working and what isn&rsquo;t.</p>
-<p>For context, AskPoker.ai is my attempt to build a conversational AI poker coach that gives recreational players instant, solver-backed analysis of their hands. Instead of wrestling with complex software like PioSOLVER, players can just describe their hand in plain English and get clear strategic advice. I&rsquo;ve been working on this for about 6 months, and this is my first public update on the journey. You can read more about the original vision in my 
-<a href="https://www.jiliac.com/post/askpoker/" target="_blank" rel="noopener">announcement post</a>.</p>
-<h2 id="what-i-tried-forum-engagement-experiment">What I Tried: Forum Engagement Experiment</h2>
-<p>My plan was simple: test demand by answering poker hands on Reddit and 2+2 with AskPoker analysis. Use the tool to generate insights, then sign responses with &ldquo;made with askpoker.ai&rdquo; to see if people were interested in the platform.</p>
-<p>The goal was to validate the core value proposition while driving some early traffic. What I found instead was a masterclass in why assumptions need real-world testing.</p>
-<h2 id="hard-truths-discovered">Hard Truths Discovered</h2>
-<h3 id="1-the-product-isnt-ready">1. The Product Isn&rsquo;t Ready</h3>
-<p><strong>Table size limitation</strong>: My backend solver only handles 5-max tables, not the 6+ player tables common in most online games. When users post hands from full ring games, the solver has no data, so the LLM just improvises answers based on general poker knowledge.</p>
-<p>I knew this was a constraint going in, but experiencing it in practice hit different. I now understand I <em>must</em> solve this limitation eventually (though interestingly, in the French market where 5-max cash games dominate, this might not be as critical).</p>
-<p><strong>Scope mismatch</strong>: I built the tool to analyze single decisions (&ldquo;Should I call this river bet?&quot;), but users want comprehensive hand reviews. They want to know where their decisions went wrong across multiple streets, not just get advice on one spot.</p>
-<p><strong>Insufficient backend data</strong>: The solver gives me the optimal action, but lacks the rich context needed for proper explanations - full ranges, equity calculations, expected value, fold equity. Without this data, the LLM fills in gaps with educated guesses that sometimes sound confident but are wrong.</p>
-<p><strong>Basic bugs</strong>: Simple things like currency-to-blind conversion. I expected the LLM to handle this automatically when calling the backend, but it doesn&rsquo;t.</p>
-<h3 id="2-market-reality-check">2. Market Reality Check</h3>
-<p><strong>Forum fragmentation</strong>: Even active communities like 2+2 and Reddit aren&rsquo;t exactly buzzing with activity. There&rsquo;s discussion, but it&rsquo;s not the vibrant marketplace of poker questions I had imagined.</p>
-<p><strong>French market gap</strong>: I found essentially no active French poker discussion platforms. This surprised me - I expected at least some local communities.</p>
-<p><strong>User behavior insight</strong>: Players consume more content (YouTube, training sites) than they engage in forum discussions. This suggests my marketing approach needs to meet users where they actually spend time, not where I assumed they&rsquo;d be.</p>
-<h3 id="3-the-concierge-mvp-reality-check">3. The Concierge MVP Reality Check</h3>
-<p>Here&rsquo;s where brutal honesty matters: my initial assessment was too rosy.</p>
-<p><strong>Actual results</strong>: About 75% of my responses were ignored, ~15% got genuine positive responses from users (actual replies thanking me for the analysis), and ~10% were called out for containing errors where the LLM had hallucinated explanations.</p>
-<p><strong>Reddit truth</strong>: People might not always give positive feedback when you help them, but they <em>never</em> let wrong analysis slide. Every mistake gets caught and corrected, often harshly.</p>
-<p><strong>Key insight</strong>: Demand absolutely exists for expert-level analysis in accessible language, but the quality bar is unforgiving. There&rsquo;s no room for &ldquo;pretty good&rdquo; when giving strategic advice.</p>
-<h2 id="the-pivot-from-product-to-process">The Pivot: From Product to Process</h2>
-<h3 id="why-concierge-mvp-makes-sense">Why Concierge MVP Makes Sense</h3>
-<p>The product is too broken for self-service user testing, but the manual approach validates something crucial: the core value proposition works when executed correctly.</p>
-<p>More importantly, I need to answer a fundamental question: <strong>Are recreational players ready to trust an AI coach?</strong> This is about more than just technical capability - it&rsquo;s about user psychology and market readiness.</p>
-<p>While I&rsquo;m confident I can solve the technical issues given enough time, creating trust is a different challenge entirely. This requires marketing and communication skills that aren&rsquo;t in my natural wheelhouse, making validation even more critical.</p>
-<p>My new process: users message me via email or Discord for hand analysis. I use the backend tool to generate insights, then manually refine and explain the analysis. This creates a controlled environment to test whether players accept AI-driven coaching when it&rsquo;s delivered thoughtfully.</p>
-<h3 id="new-strategy-content-led-growth">New Strategy: Content-Led Growth</h3>
-<p><strong>Blog foundation</strong>: Generate poker-specific content using the LLM+solver combination. This content becomes source material for TikTok scripts and other marketing efforts - creating a scalable content system.</p>
-<p><strong>TikTok expansion</strong>: Meet users where they actually are, not in forums. Poker content performs well on TikTok, and the format suits quick hand analysis and strategy tips.</p>
-<p><strong>Novel LLM usage</strong>: This isn&rsquo;t just automating existing tasks - I&rsquo;m using AI as both an exploration agent (to probe solver outputs) and as a writer (to explain complex concepts clearly). This combination creates content capabilities that didn&rsquo;t exist before.</p>
-<p><strong>Transparent AI positioning</strong>: Brand myself as &ldquo;Human + AI&rdquo; poker analysis. Be upfront about using AI tools while emphasizing human judgment and experience.</p>
-<h2 id="technical-priorities-despite-no-product-development">Technical Priorities (Despite &ldquo;No Product Development&rdquo;)</h2>
-<p>I said I&rsquo;d stop building features, but I need to fix the solver-LLM pipeline to eliminate hallucinations. The focus shifts from user-facing features to content creation tools:</p>
+      <p><em>Week 2 of building 
+<a href="https://askpoker.ai" target="_blank" rel="noopener">AskPoker.ai</a> in public. This week: technical progress, content creation infrastructure, and a strategic market pivot.</em></p>
+<h2 id="technical-progress-building-the-data-pipeline">Technical Progress: Building the Data Pipeline</h2>
+<p>Last week&rsquo;s experiments made it clear I needed better data from my solver to create meaningful content. So I built a comprehensive evaluation function:</p>
+<pre><code class="language-go">type EvalReport struct {
+    ActionEVs []float32  // Expected value for each possible action
+    Equity    float32    // Current hand equity
+    EQRs      []float32  // Equity realization by action
+    AvgPolicy []float64  // Solver's recommended action frequencies
+    AvgEquity float32    // Average equity across opponent range
+}
+</code></pre>
+<p>This gives me everything needed to explain <em>why</em> a play is optimal, not just <em>what</em> to do. I wrote a script that runs this for every decision point in a hand, creating a complete strategic narrative.</p>
+<h3 id="the-bottleneck">The Bottleneck</h3>
+<p>Here&rsquo;s where past shortcuts caught up with me. Generating game states by sampling from subgames is painfully slow. Why? A month ago, I took a shortcut in how I handle range distributions. Instead of maintaining explicit range objects with hand probabilities, I used a simpler approach that now makes sampling computationally expensive.</p>
+<p>The fix is straightforward – properly maintain range objects throughout the calculation. But it means rewriting a chunk of the solver infrastructure. For now, turn and river analysis is essentially broken, limiting me to flop-only content.</p>
+<p>I decided to defer this fix. Why spend days on technical debt when I still need to validate whether anyone wants this product?</p>
+<h2 id="content-creation-engine-from-data-to-articles">Content Creation Engine: From Data to Articles</h2>
+<p>Instead of perfecting the solver, I built a content generation pipeline:</p>
+<ol>
+<li><strong>Data Generation</strong>: Run EvalHand for each decision point</li>
+<li><strong>AI Analysis</strong>: Feed each situation to an LLM for strategic interpretation</li>
+<li><strong>Outline Creation</strong>: Combine solver data + manual context → LLM creates article outline</li>
+<li><strong>Human Review</strong>: I review and adjust the outline</li>
+<li><strong>Draft Generation</strong>: LLM writes the first draft</li>
+<li><strong>Final Edit</strong>: Human polish and fact-checking</li>
+</ol>
+<p>The process works. I published two deep-dive analyses:</p>
 <ul>
-<li>Fix solver data output to provide complete strategic context</li>
-<li>Build reliable solver-LLM pipeline for scalable content creation</li>
-<li>Develop the infrastructure needed for consistent, accurate analysis</li>
+<li>
+<a href="https://www.askpoker.ai/blog/montenegro-444k-pot" target="_blank" rel="noopener">Montenegro&rsquo;s $444k pot breakdown</a></li>
+<li>
+<a href="https://www.askpoker.ai/blog/100k-pocket-tens-that-refused-to-die" target="_blank" rel="noopener">$100k pocket tens analysis</a></li>
 </ul>
-<h2 id="whats-next">What&rsquo;s Next</h2>
-<p><strong>Weekly devlogs</strong>: Continue documenting discoveries and pivots transparently.</p>
-<p><strong>Manual hand analysis</strong>: Build audience and expertise through direct engagement while testing AI coach acceptance.</p>
-<p><strong>Content system development</strong>: Create the infrastructure for scalable marketing through AI-assisted content creation.</p>
-<p><strong>Eventual transition</strong>: Move from concierge to automated product once the core experience is proven and technical limitations are resolved.</p>
-<h2 id="closing-reflection">Closing Reflection</h2>
-<p>Sometimes the best product development is realizing when to stop developing and start validating. This week taught me that building in public means being honest about failures, not just successes.</p>
-<p>The forum experiment didn&rsquo;t go as planned, but it revealed something more valuable than validation: it showed me exactly what needs to be fixed and where my assumptions were wrong. That&rsquo;s worth more than a hundred positive feedback comments on a fundamentally flawed approach.</p>
-<p>Next week: Testing how far I can push the LLM+solver integration to create a scalable marketing system. Building out the new website with proper landing page and CMS, then seeing what kind of poker content I can generate automatically.</p>
+<p>Images are still manual (screenshots, generated images), and there&rsquo;s an annoying OpenGraph bug to fix, but the core pipeline produces solid content. Each piece takes about 2-3 hours from data to published article.</p>
+<p align="center" >
+  <img alt="Complex solver interface with ranges, frequencies, and technical data that's overwhelming for beginners"
+    src="/img/blogs.jpg" width="600px" />
+</p>
+<h2 id="strategic-market-pivot-narrowing-focus">Strategic Market Pivot: Narrowing Focus</h2>
+<p>This week forced a reality check on my market ambitions.</p>
+<p><strong>Original vision</strong>: Target US/global cash games – the biggest poker market. These games typically run 7-9 players with varying stack sizes.</p>
+<p><strong>The problems</strong>:</p>
+<ul>
+<li>My solver only handles 5-max games</li>
+<li>I don&rsquo;t actually play these formats (French platforms are segregated)</li>
+<li>Technical complexity scales exponentially with more players</li>
+<li>I&rsquo;m building for a market I don&rsquo;t understand</li>
+</ul>
+<p><strong>New direction</strong>: French 3-player Spin &amp; Go tournaments.</p>
+<p>Yes, it&rsquo;s a smaller market. But consider:</p>
+<ul>
+<li>3 players instead of 9 (dramatically simpler to solve)</li>
+<li>Short stacks (less strategic complexity)</li>
+<li>Most popular format in France</li>
+<li>I actually play this format daily</li>
+</ul>
+<p>This feels like a retreat, but it&rsquo;s strategic. Better to build something that works for a market I understand than to fail chasing a larger opportunity.</p>
+<h2 id="the-well-expand-later-trap">The &ldquo;We&rsquo;ll Expand Later&rdquo; Trap</h2>
+<p>I&rsquo;m aware of the risk. Countless startups say &ldquo;we&rsquo;ll expand later&rdquo; and become trapped in their initial niche. Their product-market fit becomes so specific that expansion requires starting over.</p>
+<p>But poker might be different. The core challenge isn&rsquo;t teaching French players different rules – it&rsquo;s getting anyone to trust AI coaching. If I can prove French players will take strategic advice from an AI, that psychological validation should transfer across markets. The technical details (game formats, stack sizes) are engineering problems. Trust is the real barrier.</p>
+<h2 id="next-focus-tiktok-experimentation">Next Focus: TikTok Experimentation</h2>
+<p>The blog posts are live but not promoted – they&rsquo;re raw material for the next experiment. This week I&rsquo;m pivoting to TikTok content creation. Poker strategy performs well in short-form video, and it&rsquo;s where my target audience actually spends time.</p>
+<p>The plan: Transform blog analyses into bite-sized video content. Test what resonates. Learn what hooks work. Then scale what succeeds.</p>
+<h2 id="looking-ahead">Looking Ahead</h2>
+<p>Week 2 taught me to embrace constraints. My solver can&rsquo;t handle everything, so I&rsquo;ll focus on what it can. The global market is too broad, so I&rsquo;ll start with France. Perfect technical solutions can wait until after market validation.</p>
+<p>Next week: Results from TikTok experiments and the eternal question – when do I fix that sampling bug?</p>
 <hr>
-<p><em>Try the conversational expertise approach yourself at 
-<a href="https://chat.askpoker.ai" target="_blank" rel="noopener">askpoker.ai</a>, or contact me on 
+<p><em>What would you build for your local market first? Let me know on 
+<a href="https://x.com/Jilyac" target="_blank" rel="noopener">Twitter</a> or 
 <a href="https://discord.gg/syvRUScU" target="_blank" rel="noopener">Discord</a>.</em></p>
 
     </div>
@@ -702,7 +718,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/devlog/1/&amp;text=AskPoker.ai%20Log%20#1:%20Reality%20Check%20and%20Pivot%20to%20Concierge%20MVP" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/devlog/2/&amp;text=AskPoker.ai%20Dev%20Log%20#2:%20Building%20a%20Content%20Engine%20and%20Finding%20My%20Market" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -715,7 +731,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/devlog/1/&amp;title=AskPoker.ai%20Log%20#1:%20Reality%20Check%20and%20Pivot%20to%20Concierge%20MVP" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/devlog/2/&amp;title=AskPoker.ai%20Dev%20Log%20#2:%20Building%20a%20Content%20Engine%20and%20Finding%20My%20Market" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -728,7 +744,7 @@
       
       
       <li>
-        <a href="https://reddit.com/submit?url=/devlog/1/&amp;title=AskPoker.ai%20Log%20#1:%20Reality%20Check%20and%20Pivot%20to%20Concierge%20MVP" target="_blank" rel="noopener" class="share-btn-reddit">
+        <a href="https://reddit.com/submit?url=/devlog/2/&amp;title=AskPoker.ai%20Dev%20Log%20#2:%20Building%20a%20Content%20Engine%20and%20Finding%20My%20Market" target="_blank" rel="noopener" class="share-btn-reddit">
           <i class="fab fa-reddit-alien"></i>
         </a>
       </li>
