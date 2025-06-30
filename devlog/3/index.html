@@ -27,10 +27,10 @@
   
     
   
-  <meta name="description" content="Building AskPoker.ai week 2: Created a content engine with AI &#43; solver data, pivoting to French Spin &amp; Go market, and launching TikTok experiments.">
+  <meta name="description" content="Backend breakthrough meets video content reality check. This week: solved the range handling bottleneck, completed 3-player tournament support, and learned why AI-generated TikTok videos are harder than they look.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/devlog/2/">
+  <link rel="alternate" hreflang="en-us" href="/devlog/3/">
 
   
 
@@ -220,7 +220,7 @@
   <link rel="icon" type="image/png" href="/img/coffee.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/coffee.png">
 
-  <link rel="canonical" href="/devlog/2/">
+  <link rel="canonical" href="/devlog/3/">
 
   
   
@@ -240,15 +240,15 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Valentin Manès">
-  <meta property="og:url" content="/devlog/2/">
-  <meta property="og:title" content="AskPoker.ai Log #2: Building a Content Engine and Finding My Market | Valentin Manès">
-  <meta property="og:description" content="Building AskPoker.ai week 2: Created a content engine with AI &#43; solver data, pivoting to French Spin &amp; Go market, and launching TikTok experiments."><meta property="og:image" content="https://jiliac.com/devlog/2/featured.jpg">
-  <meta property="twitter:image" content="https://jiliac.com/devlog/2/featured.jpg"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="/devlog/3/">
+  <meta property="og:title" content="AskPoker.ai Log #3: When Perfect Tech Meets Messy Reality | Valentin Manès">
+  <meta property="og:description" content="Backend breakthrough meets video content reality check. This week: solved the range handling bottleneck, completed 3-player tournament support, and learned why AI-generated TikTok videos are harder than they look."><meta property="og:image" content="https://jiliac.com/devlog/3/featured.jpg">
+  <meta property="twitter:image" content="https://jiliac.com/devlog/3/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2025-06-16T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2025-06-30T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2025-06-16T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-06-30T00:00:00&#43;00:00">
   
 
   
@@ -267,7 +267,7 @@
 
 
 
-  <title>AskPoker.ai Log #2: Building a Content Engine and Finding My Market | Valentin Manès</title>
+  <title>AskPoker.ai Log #3: When Perfect Tech Meets Messy Reality | Valentin Manès</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -559,7 +559,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>AskPoker.ai Log #2: Building a Content Engine and Finding My Market</h1>
+  <h1>AskPoker.ai Log #3: When Perfect Tech Meets Messy Reality</h1>
 
   
 
@@ -577,7 +577,7 @@
     
       
     
-    Jun 16, 2025
+    Jun 30, 2025
   </span>
   
 
@@ -614,7 +614,7 @@
 
 <div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
   <div style="position: relative">
-    <img src="/devlog/2/featured_hu02aa61ae1d9de35cbe238d2676170cb9_149785_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <img src="/devlog/3/featured_hu02aa61ae1d9de35cbe238d2676170cb9_160755_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
     
   </div>
 </div>
@@ -624,77 +624,68 @@
   <div class="article-container">
 
     <div class="text-justify article-style">
-      <p><em>Week 2 of building 
-<a href="https://askpoker.ai" target="_blank" rel="noopener">AskPoker.ai</a> in public. This week: technical progress, content creation infrastructure, and a strategic market pivot.</em></p>
-<h2 id="technical-progress-building-the-data-pipeline">Technical Progress: Building the Data Pipeline</h2>
-<p>Last week&rsquo;s experiments made it clear I needed better data from my solver to create meaningful content. So I built a comprehensive evaluation function:</p>
-<pre><code class="language-go">type EvalReport struct {
-    ActionEVs []float32  // Expected value for each possible action
-    Equity    float32    // Current hand equity
-    EQRs      []float32  // Equity realization by action
-    AvgPolicy []float64  // Solver's recommended action frequencies
-    AvgEquity float32    // Average equity across opponent range
-}
-</code></pre>
-<p>This gives me everything needed to explain <em>why</em> a play is optimal, not just <em>what</em> to do. I wrote a script that runs this for every decision point in a hand, creating a complete strategic narrative.</p>
-<h3 id="the-bottleneck">The Bottleneck</h3>
-<p>Here&rsquo;s where past shortcuts caught up with me. Generating game states by sampling from subgames is painfully slow. Why? A month ago, I took a shortcut in how I handle range distributions. Instead of maintaining explicit range objects with hand probabilities, I used a simpler approach that now makes sampling computationally expensive.</p>
-<p>The fix is straightforward – properly maintain range objects throughout the calculation. But it means rewriting a chunk of the solver infrastructure. For now, turn and river analysis is essentially broken, limiting me to flop-only content.</p>
-<p>I decided to defer this fix. Why spend days on technical debt when I still need to validate whether anyone wants this product?</p>
-<h2 id="content-creation-engine-from-data-to-articles">Content Creation Engine: From Data to Articles</h2>
-<p>Instead of perfecting the solver, I built a content generation pipeline:</p>
+      <p>Sometimes the biggest technical breakthroughs happen in the same week as your most frustrating creative blocks. This week I solved major backend issues that had been plaguing AskPoker for months, then promptly got humbled by the seemingly simple task of making a TikTok video.</p>
+<h2 id="technical-wins-the-foundation-finally-works">Technical Wins: The Foundation Finally Works</h2>
+<p><strong>Expresso Integration Complete</strong></p>
+<p>The backend now fully supports 3-player Spin &amp; Go tournaments (called &ldquo;Expresso&rdquo; in France). This was the strategic pivot I mentioned in dev log #2 - focusing on a format I actually understand rather than chasing global cash game markets I don&rsquo;t play.</p>
+<p>The solver handles 3-player dynamics properly now. Short stacks, push-fold situations - all the elements that make these tournaments strategically unique are captured in the analysis.</p>
+<p><strong>Range Handling Rewrite</strong></p>
+<p>Remember the sampling bottleneck from last week? The one that made turn and river analysis painfully slow? Fixed.</p>
+<p>I rewrote the core range handling system to maintain explicit range objects throughout the entire calculation pipeline. Instead of the hacky sampling approach that was creating computational bottlenecks, the solver now tracks hand probabilities properly at every decision point.</p>
+<p><strong>The Hidden Bug</strong></p>
+<p>While rewriting the range system, I discovered something embarrassing: the old method had an off-by-one error that was subtly affecting all calculations. Not game-breaking, but enough to skew some strategic recommendations.</p>
+<p>This is why I&rsquo;m glad I found this during the rewrite rather than after publishing hundreds of analyses with slightly wrong math. The new system is both faster and more accurate.</p>
+<p>The technical foundation is now solid. Turn and river analysis works. Complex tournament situations get proper treatment. I can generate comprehensive hand breakdowns without computational constraints.</p>
+<h2 id="the-video-content-reality-check">The Video Content Reality Check</h2>
+<p>With the backend working, I turned to the main challenge: creating video content for TikTok and other platforms.</p>
+<p><strong>The AI Conversion Experiment</strong></p>
+<p>My first attempt was logical but naive: automatically convert the blog posts I&rsquo;d written into video scripts using AI.</p>
+<p>The results were terrible. The AI would generate robotic voiceovers paired with generic poker visuals that had no engagement factor whatsoever. Even when the strategic content was accurate, the presentation was so boring that no one would watch past the first few seconds.</p>
+<p>Written content and video content serve different purposes. Blog posts can dive deep into nuanced strategic concepts. Videos need immediate hooks and clear, simple messages. The formats aren&rsquo;t interchangeable.</p>
+<p><strong>Manual Conversion Overwhelm</strong></p>
+<p>Next, I tried manually adapting the written content. I printed out blog posts, started breaking them into video segments, thinking about visual elements, transitions, hooks&hellip;</p>
+<p>Two hours in, I was overwhelmed. The amount of creative decisions required for each piece of content was staggering. Which hands to showcase? What visual style? How to structure the narrative? What&rsquo;s the hook in the first 3 seconds?</p>
+<p>I realized I was trying to become a video creator overnight when I&rsquo;m fundamentally a developer. After two days of this, I gave up on the blog conversion approach entirely.</p>
+<p><strong>The Pivot to Simplicity</strong></p>
+<p>Instead of complex content adaptation, I moved to the simplest possible format: direct app demonstration.</p>
+<p>The process became straightforward:</p>
 <ol>
-<li><strong>Data Generation</strong>: Run EvalHand for each decision point</li>
-<li><strong>AI Analysis</strong>: Feed each situation to an LLM for strategic interpretation</li>
-<li><strong>Outline Creation</strong>: Combine solver data + manual context → LLM creates article outline</li>
-<li><strong>Human Review</strong>: I review and adjust the outline</li>
-<li><strong>Draft Generation</strong>: LLM writes the first draft</li>
-<li><strong>Final Edit</strong>: Human polish and fact-checking</li>
+<li>Play actual Expresso tournaments and record the sessions</li>
+<li>Take interesting hands from those sessions</li>
+<li>Record myself asking AskPoker about those hands</li>
+<li>Create an AI avatar using HeyGen with ElevenLabs voice narration</li>
+<li>Edit everything together in Kapwing</li>
 </ol>
-<p>The process works. I published two deep-dive analyses:</p>
-<ul>
-<li>
-<a href="https://www.askpoker.ai/blog/montenegro-444k-pot" target="_blank" rel="noopener">Montenegro&rsquo;s $444k pot breakdown</a></li>
-<li>
-<a href="https://www.askpoker.ai/blog/100k-pocket-tens-that-refused-to-die" target="_blank" rel="noopener">$100k pocket tens analysis</a></li>
-</ul>
-<p>Images are still manual (screenshots, generated images), and there&rsquo;s an annoying OpenGraph bug to fix, but the core pipeline produces solid content. Each piece takes about 2-3 hours from data to published article.</p>
+<p>This format showcases the product directly without requiring complex storytelling or educational frameworks. Users see exactly what the experience looks like.</p>
 <p align="center" >
-  <img alt="Screenshot of AskPoker.ai blog showing two poker hand analysis articles: 'The $100,000 Pocket Tens That Refused to Die' featuring pocket tens cards and poker chips, and 'The $444,000 Flush Draw That Changed Everything' showing a live poker table at Triton Montenegro with players in action"
-    src="/img/devlogs/blogs.jpg" width="600px" />
+  <img alt="Poker hand screenshot above a man in a yellow hoodie talking into a mic."
+    src="/img/devlogs/tiktok_v1.jpg" width="250px" />
 </p>
-<h2 id="strategic-market-pivot-narrowing-focus">Strategic Market Pivot: Narrowing Focus</h2>
-<p>This week forced a reality check on my market ambitions.</p>
-<p><strong>Original vision</strong>: Target US/global cash games – the biggest poker market. These games typically run 7-9 players with varying stack sizes.</p>
-<p><strong>The problems</strong>:</p>
-<ul>
-<li>My solver only handles 5-max games</li>
-<li>I don&rsquo;t actually play these formats (French platforms are segregated)</li>
-<li>Technical complexity scales exponentially with more players</li>
-<li>I&rsquo;m building for a market I don&rsquo;t understand</li>
-</ul>
-<p><strong>New direction</strong>: French 3-player Spin &amp; Go tournaments.</p>
-<p>Yes, it&rsquo;s a smaller market. But consider:</p>
-<ul>
-<li>3 players instead of 9 (dramatically simpler to solve)</li>
-<li>Short stacks (less strategic complexity)</li>
-<li>Most popular format in France</li>
-<li>I actually play this format daily</li>
-</ul>
-<p>This feels like a retreat, but it&rsquo;s strategic. Better to build something that works for a market I understand than to fail chasing a larger opportunity.</p>
-<h2 id="the-well-expand-later-trap">The &ldquo;We&rsquo;ll Expand Later&rdquo; Trap</h2>
-<p>I&rsquo;m aware of the risk. Countless startups say &ldquo;we&rsquo;ll expand later&rdquo; and become trapped in their initial niche. Their product-market fit becomes so specific that expansion requires starting over.</p>
-<p>But poker might be different. The core challenge isn&rsquo;t teaching French players different rules – it&rsquo;s getting anyone to trust AI coaching. If I can prove French players will take strategic advice from an AI, that psychological validation should transfer across markets. The technical details (game formats, stack sizes) are engineering problems. Trust is the real barrier.</p>
-<h2 id="next-focus-tiktok-experimentation">Next Focus: TikTok Experimentation</h2>
-<p>The blog posts are live but not promoted – they&rsquo;re raw material for the next experiment. This week I&rsquo;m pivoting to TikTok content creation. Poker strategy performs well in short-form video, and it&rsquo;s where my target audience actually spends time.</p>
-<p>The plan: Transform blog analyses into bite-sized video content. Test what resonates. Learn what hooks work. Then scale what succeeds.</p>
-<h2 id="looking-ahead">Looking Ahead</h2>
-<p>Week 2 taught me to embrace constraints. My solver can&rsquo;t handle everything, so I&rsquo;ll focus on what it can. The global market is too broad, so I&rsquo;ll start with France. Perfect technical solutions can wait until after market validation.</p>
-<p>Next week: Results from TikTok experiments and the eternal question – when do I fix that sampling bug?</p>
-<hr>
-<p><em>What would you build for your local market first? Let me know on 
-<a href="https://x.com/Jilyac" target="_blank" rel="noopener">Twitter</a> or 
-<a href="https://discord.gg/syvRUScU" target="_blank" rel="noopener">Discord</a>.</em></p>
+<h2 id="the-uncanny-valley-problem">The Uncanny Valley Problem</h2>
+<p>I was happy with the first video I produced. The demonstration was clear, the analysis was accurate, and the production quality looked professional.</p>
+<p>Then I showed it to my brothers.</p>
+<p>&ldquo;The voice feels too unnatural,&rdquo; they said immediately. &ldquo;It&rsquo;s obviously AI, and people just won&rsquo;t want to watch this.&rdquo;</p>
+<p>This created a dilemma. I wanted the &ldquo;full AI feeling&rdquo; for the content - using AI to generate the avatar, voice, and even some of the script. It felt thematically consistent with building an AI poker coach.</p>
+<p>But if the AI-generated presentation makes content unwatchable, it defeats the purpose entirely.</p>
+<p><strong>Platform Compliance Issues</strong></p>
+<p>When I posted the video on TikTok, it got restricted for not respecting their content policies. I need to investigate what specifically triggered this - was it the AI avatar, the poker content, or something else entirely?</p>
+<p>This adds another layer of complexity. Even if I solve the authenticity problem, I still need to navigate platform-specific rules about AI-generated content, gambling-adjacent topics, and promotional material.</p>
+<p>Facebook ads present another compliance hurdle. Getting approval for poker-related content with AI elements might require careful positioning and multiple iterations.</p>
+<h2 id="the-deeper-lesson">The Deeper Lesson</h2>
+<p>This week highlighted an interesting contrast: technical problems versus creative problems.</p>
+<p>Rewriting the range handling system was straightforward. The requirements were clear, the success criteria were measurable, and the solution was mostly a matter of careful implementation.</p>
+<p>Creating engaging video content feels impossibly subjective. What makes one video engaging while another falls flat? How do you balance authenticity with production efficiency? When does AI enhancement become a liability?</p>
+<p>Having a working product doesn&rsquo;t automatically translate to compelling marketing content. The skills required are completely different, and the feedback loops are much longer and harder to interpret.</p>
+<h2 id="next-weeks-strategy">Next Week&rsquo;s Strategy</h2>
+<p><strong>Natural Voice Experiments</strong></p>
+<p>I need to test whether recording my own voice produces better results than the AI-generated narration. This means giving up some of the &ldquo;full AI&rdquo; aesthetic I was pursuing, but if it makes the content more engaging, that&rsquo;s the right trade-off.</p>
+<p><strong>Compliance Deep Dive</strong></p>
+<p>Understanding exactly what triggered the TikTok restriction and what Facebook requires for ad approval. This might involve creating multiple versions of content with different approaches to stay within platform guidelines.</p>
+<p><strong>The Bigger Question</strong></p>
+<p>When to push AI boundaries versus when to embrace human elements? Maybe the best AI-powered business isn&rsquo;t the one that uses AI everywhere, but the one that applies AI strategically where it adds the most value.</p>
+<p>For AskPoker, that might mean AI for the core strategic analysis (where computational power matters) and human elements for content creation (where authenticity and relatability matter).</p>
+<p><strong>Next Week Preview</strong></p>
+<p>Testing whether authentic presentation trumps polished AI production, and diving deep into content platform compliance requirements.</p>
 
     </div>
 
@@ -718,7 +709,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/devlog/2/&amp;text=AskPoker.ai%20Log%20#2:%20Building%20a%20Content%20Engine%20and%20Finding%20My%20Market" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/devlog/3/&amp;text=AskPoker.ai%20Log%20#3:%20When%20Perfect%20Tech%20Meets%20Messy%20Reality" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -731,7 +722,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/devlog/2/&amp;title=AskPoker.ai%20Log%20#2:%20Building%20a%20Content%20Engine%20and%20Finding%20My%20Market" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/devlog/3/&amp;title=AskPoker.ai%20Log%20#3:%20When%20Perfect%20Tech%20Meets%20Messy%20Reality" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -744,7 +735,7 @@
       
       
       <li>
-        <a href="https://reddit.com/submit?url=/devlog/2/&amp;title=AskPoker.ai%20Log%20#2:%20Building%20a%20Content%20Engine%20and%20Finding%20My%20Market" target="_blank" rel="noopener" class="share-btn-reddit">
+        <a href="https://reddit.com/submit?url=/devlog/3/&amp;title=AskPoker.ai%20Log%20#3:%20When%20Perfect%20Tech%20Meets%20Messy%20Reality" target="_blank" rel="noopener" class="share-btn-reddit">
           <i class="fab fa-reddit-alien"></i>
         </a>
       </li>

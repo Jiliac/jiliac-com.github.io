@@ -5,12 +5,82 @@
     <link>/devlog/</link>
       <atom:link href="/devlog/index.xml" rel="self" type="application/rss+xml" />
     <description>Devlogs</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 16 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/profile_valentin.png</url>
       <title>Devlogs</title>
       <link>/devlog/</link>
     </image>
+    
+    <item>
+      <title>AskPoker.ai Log #3: When Perfect Tech Meets Messy Reality</title>
+      <link>/devlog/3/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/devlog/3/</guid>
+      <description>&lt;p&gt;Sometimes the biggest technical breakthroughs happen in the same week as your most frustrating creative blocks. This week I solved major backend issues that had been plaguing AskPoker for months, then promptly got humbled by the seemingly simple task of making a TikTok video.&lt;/p&gt;
+&lt;h2 id=&#34;technical-wins-the-foundation-finally-works&#34;&gt;Technical Wins: The Foundation Finally Works&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Expresso Integration Complete&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The backend now fully supports 3-player Spin &amp;amp; Go tournaments (called &amp;ldquo;Expresso&amp;rdquo; in France). This was the strategic pivot I mentioned in dev log #2 - focusing on a format I actually understand rather than chasing global cash game markets I don&amp;rsquo;t play.&lt;/p&gt;
+&lt;p&gt;The solver handles 3-player dynamics properly now. Short stacks, push-fold situations - all the elements that make these tournaments strategically unique are captured in the analysis.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Range Handling Rewrite&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Remember the sampling bottleneck from last week? The one that made turn and river analysis painfully slow? Fixed.&lt;/p&gt;
+&lt;p&gt;I rewrote the core range handling system to maintain explicit range objects throughout the entire calculation pipeline. Instead of the hacky sampling approach that was creating computational bottlenecks, the solver now tracks hand probabilities properly at every decision point.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Hidden Bug&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;While rewriting the range system, I discovered something embarrassing: the old method had an off-by-one error that was subtly affecting all calculations. Not game-breaking, but enough to skew some strategic recommendations.&lt;/p&gt;
+&lt;p&gt;This is why I&amp;rsquo;m glad I found this during the rewrite rather than after publishing hundreds of analyses with slightly wrong math. The new system is both faster and more accurate.&lt;/p&gt;
+&lt;p&gt;The technical foundation is now solid. Turn and river analysis works. Complex tournament situations get proper treatment. I can generate comprehensive hand breakdowns without computational constraints.&lt;/p&gt;
+&lt;h2 id=&#34;the-video-content-reality-check&#34;&gt;The Video Content Reality Check&lt;/h2&gt;
+&lt;p&gt;With the backend working, I turned to the main challenge: creating video content for TikTok and other platforms.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The AI Conversion Experiment&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;My first attempt was logical but naive: automatically convert the blog posts I&amp;rsquo;d written into video scripts using AI.&lt;/p&gt;
+&lt;p&gt;The results were terrible. The AI would generate robotic voiceovers paired with generic poker visuals that had no engagement factor whatsoever. Even when the strategic content was accurate, the presentation was so boring that no one would watch past the first few seconds.&lt;/p&gt;
+&lt;p&gt;Written content and video content serve different purposes. Blog posts can dive deep into nuanced strategic concepts. Videos need immediate hooks and clear, simple messages. The formats aren&amp;rsquo;t interchangeable.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Manual Conversion Overwhelm&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Next, I tried manually adapting the written content. I printed out blog posts, started breaking them into video segments, thinking about visual elements, transitions, hooks&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Two hours in, I was overwhelmed. The amount of creative decisions required for each piece of content was staggering. Which hands to showcase? What visual style? How to structure the narrative? What&amp;rsquo;s the hook in the first 3 seconds?&lt;/p&gt;
+&lt;p&gt;I realized I was trying to become a video creator overnight when I&amp;rsquo;m fundamentally a developer. After two days of this, I gave up on the blog conversion approach entirely.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Pivot to Simplicity&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Instead of complex content adaptation, I moved to the simplest possible format: direct app demonstration.&lt;/p&gt;
+&lt;p&gt;The process became straightforward:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Play actual Expresso tournaments and record the sessions&lt;/li&gt;
+&lt;li&gt;Take interesting hands from those sessions&lt;/li&gt;
+&lt;li&gt;Record myself asking AskPoker about those hands&lt;/li&gt;
+&lt;li&gt;Create an AI avatar using HeyGen with ElevenLabs voice narration&lt;/li&gt;
+&lt;li&gt;Edit everything together in Kapwing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This format showcases the product directly without requiring complex storytelling or educational frameworks. Users see exactly what the experience looks like.&lt;/p&gt;
+&lt;p align=&#34;center&#34; &gt;
+  &lt;img alt=&#34;Poker hand screenshot above a man in a yellow hoodie talking into a mic.&#34;
+    src=&#34;/img/devlogs/tiktok_v1.jpg&#34; width=&#34;250px&#34; /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;the-uncanny-valley-problem&#34;&gt;The Uncanny Valley Problem&lt;/h2&gt;
+&lt;p&gt;I was happy with the first video I produced. The demonstration was clear, the analysis was accurate, and the production quality looked professional.&lt;/p&gt;
+&lt;p&gt;Then I showed it to my brothers.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;The voice feels too unnatural,&amp;rdquo; they said immediately. &amp;ldquo;It&amp;rsquo;s obviously AI, and people just won&amp;rsquo;t want to watch this.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This created a dilemma. I wanted the &amp;ldquo;full AI feeling&amp;rdquo; for the content - using AI to generate the avatar, voice, and even some of the script. It felt thematically consistent with building an AI poker coach.&lt;/p&gt;
+&lt;p&gt;But if the AI-generated presentation makes content unwatchable, it defeats the purpose entirely.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Platform Compliance Issues&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When I posted the video on TikTok, it got restricted for not respecting their content policies. I need to investigate what specifically triggered this - was it the AI avatar, the poker content, or something else entirely?&lt;/p&gt;
+&lt;p&gt;This adds another layer of complexity. Even if I solve the authenticity problem, I still need to navigate platform-specific rules about AI-generated content, gambling-adjacent topics, and promotional material.&lt;/p&gt;
+&lt;p&gt;Facebook ads present another compliance hurdle. Getting approval for poker-related content with AI elements might require careful positioning and multiple iterations.&lt;/p&gt;
+&lt;h2 id=&#34;the-deeper-lesson&#34;&gt;The Deeper Lesson&lt;/h2&gt;
+&lt;p&gt;This week highlighted an interesting contrast: technical problems versus creative problems.&lt;/p&gt;
+&lt;p&gt;Rewriting the range handling system was straightforward. The requirements were clear, the success criteria were measurable, and the solution was mostly a matter of careful implementation.&lt;/p&gt;
+&lt;p&gt;Creating engaging video content feels impossibly subjective. What makes one video engaging while another falls flat? How do you balance authenticity with production efficiency? When does AI enhancement become a liability?&lt;/p&gt;
+&lt;p&gt;Having a working product doesn&amp;rsquo;t automatically translate to compelling marketing content. The skills required are completely different, and the feedback loops are much longer and harder to interpret.&lt;/p&gt;
+&lt;h2 id=&#34;next-weeks-strategy&#34;&gt;Next Week&amp;rsquo;s Strategy&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Natural Voice Experiments&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I need to test whether recording my own voice produces better results than the AI-generated narration. This means giving up some of the &amp;ldquo;full AI&amp;rdquo; aesthetic I was pursuing, but if it makes the content more engaging, that&amp;rsquo;s the right trade-off.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Compliance Deep Dive&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Understanding exactly what triggered the TikTok restriction and what Facebook requires for ad approval. This might involve creating multiple versions of content with different approaches to stay within platform guidelines.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Bigger Question&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When to push AI boundaries versus when to embrace human elements? Maybe the best AI-powered business isn&amp;rsquo;t the one that uses AI everywhere, but the one that applies AI strategically where it adds the most value.&lt;/p&gt;
+&lt;p&gt;For AskPoker, that might mean AI for the core strategic analysis (where computational power matters) and human elements for content creation (where authenticity and relatability matter).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Next Week Preview&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Testing whether authentic presentation trumps polished AI production, and diving deep into content platform compliance requirements.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>AskPoker.ai Log #2: Building a Content Engine and Finding My Market</title>
@@ -54,7 +124,7 @@
 &lt;p&gt;Images are still manual (screenshots, generated images), and there&amp;rsquo;s an annoying OpenGraph bug to fix, but the core pipeline produces solid content. Each piece takes about 2-3 hours from data to published article.&lt;/p&gt;
 &lt;p align=&#34;center&#34; &gt;
   &lt;img alt=&#34;Screenshot of AskPoker.ai blog showing two poker hand analysis articles: &#39;The $100,000 Pocket Tens That Refused to Die&#39; featuring pocket tens cards and poker chips, and &#39;The $444,000 Flush Draw That Changed Everything&#39; showing a live poker table at Triton Montenegro with players in action&#34;
-    src=&#34;/img/blogs.jpg&#34; width=&#34;600px&#34; /&gt;
+    src=&#34;/img/devlogs/blogs.jpg&#34; width=&#34;600px&#34; /&gt;
 &lt;/p&gt;
 &lt;h2 id=&#34;strategic-market-pivot-narrowing-focus&#34;&gt;Strategic Market Pivot: Narrowing Focus&lt;/h2&gt;
 &lt;p&gt;This week forced a reality check on my market ambitions.&lt;/p&gt;
